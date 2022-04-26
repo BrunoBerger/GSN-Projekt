@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d89e0d1ee67ae4c9ba880920b5e23c, type: 3}
+  m_Name: JumpPreset
+  m_EditorClassIdentifier: 
+  jumpDuration: 1
+  verticalMovement:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 4.3063684
+      outSlope: 4.3063684
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.333111
+    - serializedVersion: 3
+      time: 0.5049946
+      value: 1.6669514
+      inSlope: 0.24543978
+      outSlope: -0.03830403
+      tangentMode: 1
+      weightedMode: 3
+      inWeight: 0.46695477
+      outWeight: 0.7915367
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -10.957629
+      outSlope: -10.957629
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.26972
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  horizontalMovement:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  offsetOffLane: {x: 0, y: 1.18, z: 0}
