@@ -17,11 +17,20 @@ public class JumpBetweenLanes : MonoBehaviour
     [SerializeField] JumpPreset jumpPreset = null;
 
 
-    void Awake()
+    void checkSetup()
     {
         // Check if things are set correctly from the editor
         if (jumpPreset == null)
+        {
             Debug.LogWarning("No Jump preset set!");
+            enabled = false;
+        } 
+        if (lanes.Length<1) 
+        {
+            Debug.LogWarning("Nothing tagged 'lane' found!");
+            enabled = false;
+        }
+
     }
 
     // Start is called before the first frame update
@@ -39,6 +48,7 @@ public class JumpBetweenLanes : MonoBehaviour
                 currentLane = System.Array.IndexOf(lanes, lane);
             }
         }
+        checkSetup();
         TpToCurrentLane();
     }
 
