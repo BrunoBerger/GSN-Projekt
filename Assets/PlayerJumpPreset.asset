@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33d89e0d1ee67ae4c9ba880920b5e23c, type: 3}
-  m_Name: JumpPreset
+  m_Name: PlayerJumpPreset
   m_EditorClassIdentifier: 
   jumpDuration: 1
   verticalMovement:
@@ -26,8 +26,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.333111
     - serializedVersion: 3
-      time: 0.5049946
-      value: 1.6669514
+      time: 0.39766425
+      value: 1.2197201
       inSlope: 0.24543978
       outSlope: -0.03830403
       tangentMode: 1
@@ -70,4 +70,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  offsetOffLane: {x: 0, y: 1.18, z: 0}
+  offsetOffLane: {x: 0, y: 1.46, z: 0}

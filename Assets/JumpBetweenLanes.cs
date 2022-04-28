@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class HopLane : MonoBehaviour
+public class JumpBetweenLanes : MonoBehaviour
 {
     GameObject[] lanes;
     int currentLane;
@@ -14,13 +14,13 @@ public class HopLane : MonoBehaviour
     Vector3 jumpStartPos;
     Vector3 jumpEndPos;
 
-    [SerializeField] JumpPreset myJump = null;
+    [SerializeField] JumpPreset jumpPreset = null;
 
 
     void Awake()
     {
         // Check if things are set correctly from the editor
-        if (myJump == null)
+        if (jumpPreset == null)
             Debug.LogWarning("No Jump preset set!");
     }
 
@@ -39,7 +39,7 @@ public class HopLane : MonoBehaviour
                 currentLane = System.Array.IndexOf(lanes, lane);
             }
         }
-        tpToCurrentLane();
+        TpToCurrentLane();
     }
 
     // Update is called once per frame
@@ -47,52 +47,52 @@ public class HopLane : MonoBehaviour
     {
 
         if (Input.GetMouseButtonDown(0) && !currentlyJumping)
-            startNewJump(-1);
+            StartNewJump(-1);
         else if (Input.GetMouseButtonDown(1) && !currentlyJumping)
-            startNewJump(+1);
+            StartNewJump(+1);
 
         if (currentlyJumping)
         {
             float timeJumped = Time.time - jumpStartTime;
-            percentJumped = timeJumped / myJump.jumpDuration;
+            percentJumped = timeJumped / jumpPreset.jumpDuration;
 
             Vector3 lerpPos = Vector3.Lerp(jumpStartPos, jumpEndPos, percentJumped);
-            float currentJumpHeight = myJump.verticalMovement.Evaluate(percentJumped);
+            float currentJumpHeight = jumpPreset.verticalMovement.Evaluate(percentJumped);
             transform.position = new Vector3(
                 lerpPos.x, 
                 lerpPos.y + currentJumpHeight, 
                 0
             );
 
-            if (timeJumped >= myJump.jumpDuration)
+            if (timeJumped >= jumpPreset.jumpDuration)
             {
                 currentlyJumping = false;
                 currentLane = targetLane;
-                tpToCurrentLane(); // To correct any slight differences
+                TpToCurrentLane(); // To correct any slight differences
             }
         }
     }
 
-    void startNewJump(int jumpDirectionAndDistance)
+    void StartNewJump(int jumpDirectionAndDistance)
     {
         currentlyJumping = true;
-        targetLane = getValidLane(jumpDirectionAndDistance);
+        targetLane = GetValidLane(jumpDirectionAndDistance);
         jumpStartPos = transform.position;
-        jumpEndPos = lanes[targetLane].transform.position + myJump.offsetOffLane;
+        jumpEndPos = lanes[targetLane].transform.position + jumpPreset.offsetOffLane;
         jumpStartTime = Time.time;
     }
-    int getValidLane(int _lane = 0)
+    int GetValidLane(int _lane = 0)
     {
         return Mathf.Clamp(currentLane + _lane, 0, lanes.Length - 1); ;
     }
-    void tpToCurrentLane()
+    void TpToCurrentLane()
     {
         transform.position = new Vector3(
-            lanes[getValidLane(0)].transform.position.x,
-            lanes[getValidLane(0)].transform.position.y, 
+            lanes[GetValidLane(0)].transform.position.x,
+            lanes[GetValidLane(0)].transform.position.y, 
             transform.position.z
         );
-        transform.position += myJump.offsetOffLane;
+        transform.position += jumpPreset.offsetOffLane;
     }
 }
 

@@ -9,16 +9,4 @@ public class JumpPreset : ScriptableObject
     public AnimationCurve verticalMovement;
     public AnimationCurve horizontalMovement;
     public Vector3 offsetOffLane;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
