@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.8483733, g: 0.7602867, b: 0.52424586, a: 1}
+  m_AmbientSkyColor: {r: 0.9738509, g: 0.85008126, b: 0.3987906, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -293,7 +293,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9807285, g: 0.94732565, b: 0.73677707, a: 1}
+  m_Color: {r: 0.9713139, g: 0.9395531, b: 0.7030973, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -350,13 +350,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.5088871, y: 0.036454752, z: -0.8315839, w: 0.21948378}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.8314696, y: 0, z: 0, w: 0.55557024}
+  m_LocalPosition: {x: 0, y: 2.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 117.116, y: -191.216, z: -1.3649902}
+  m_LocalEulerAnglesHint: {x: 53.958004, y: 890.468, z: -10.058001}
 --- !u!4 &715055442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2504025730379703761, guid: e00ad386cdda26b4bb12d247df7195ff,
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 705507994}
   preset: {fileID: 11400000, guid: 1c601a59a1ea7bd4f9afdf2df67bd27a, type: 2}
-  TimeOfDay: 14.9
+  TimeOfDay: 11.5
   dayNightSpeed: 1
 --- !u!4 &1767615308
 Transform:

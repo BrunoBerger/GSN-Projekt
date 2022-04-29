@@ -4,8 +4,9 @@ using UnityEngine;
 
 
 // "Inspiered" by https://github.com/Glynn-Taylor/Tutorials
+// -> https://www.youtube.com/watch?v=m9hj9PdO328
 
-//[ExecuteAlways]
+[ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
 
@@ -40,7 +41,9 @@ public class LightingManager : MonoBehaviour
         float timePercent = TimeOfDay / 24f;
         RenderSettings.ambientLight = preset.AmbientColor.Evaluate(timePercent);
         DirectionalLight.color = preset.DirectionalColor.Evaluate(timePercent);
-        DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 60f, 120f, 20f));
-        
+        DirectionalLight.transform.rotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 60f, 0f, 0f));
+
+        //DirectionalLight.transform.l = DirectionalLight.transform.rotation(0, timePercent * 1f, 0, Space.Self);
+
     }
 }
