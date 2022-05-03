@@ -261,6 +261,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11921375eec9a034089e74408a2ee739, type: 3}
+--- !u!1001 &289165225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3228188957336666035, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_Name
+      value: Street (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715568303135299594, guid: 11921375eec9a034089e74408a2ee739,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11921375eec9a034089e74408a2ee739, type: 3}
 --- !u!1001 &422180521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,7 +638,7 @@ MonoBehaviour:
   StreetLenght: 8
   StreetWidth: 5
   ActiveStreetTiles: 10
-  ScrollSpeed: 6
+  ScrollSpeed: 10
   DecorationSpawnRate: 0.851
   DecorationSpawnAreaWidth: 40
   StreetPrefab: {fileID: 3228188957336666035, guid: 11921375eec9a034089e74408a2ee739,

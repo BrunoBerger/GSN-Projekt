@@ -32,40 +32,48 @@ public class StreetGenerator : MonoBehaviour
 
             SpawnDecoration(i * StreetLenght);
         }
-        InvokeRepeating("SpawnStreetTile",  StreetLenght/ ScrollSpeed , StreetLenght / ScrollSpeed);
-        InvokeRepeating("SpawnDecoration", StreetLenght / ScrollSpeed, StreetLenght / ScrollSpeed);
 
+        StartCoroutine(SpawnItems());
+    }
 
+    IEnumerator SpawnItems()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(StreetLenght / ScrollSpeed);
+            SpawnDecoration();
+
+        }
     }
 
     void Update()
     {
+        //Street loop
         foreach (var item in _streetQueue)
         {
             var p = item.transform.position;
             item.transform.position = new Vector3(p.x,p.y,p.z- ScrollSpeed * Time.deltaTime);
         }
+        if(_streetQueue.Count > 0 && _streetQueue.Peek().transform.position.z < (-3 - StreetLenght/2))
+        {
+            var s = _streetQueue.Dequeue();
+            s.transform.position = _lastAdded.transform.position + new Vector3(0, 0, StreetLenght);
+            _streetQueue.Enqueue(s);
+            _lastAdded = s;
+        }
 
+        //decoration loop
         foreach (var item in _decorationQueue)
         {
             var p = item.transform.position;
             item.transform.position = new Vector3(p.x, p.y, p.z - ScrollSpeed * Time.deltaTime);
         }
-        if(_decorationQueue.Count>0 && _decorationQueue.Peek().transform.position.z < -2)
+        if(_decorationQueue.Count>0 && _decorationQueue.Peek().transform.position.z < -2 )
         {
             var d = _decorationQueue.Dequeue();
             Destroy(d);
         }
 
-    }
-
-    private void SpawnStreetTile()
-    {
-        var s = Instantiate(StreetPrefab, _lastAdded.transform.position + new Vector3(0, 0, StreetLenght), Quaternion.identity, transform);
-        _streetQueue.Enqueue(s);
-        _lastAdded = s;
-        var old = _streetQueue.Dequeue();
-        Destroy(old);
     }
 
     private void SpawnDecoration()
