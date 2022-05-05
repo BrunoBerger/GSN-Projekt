@@ -26,7 +26,7 @@ public class StreetGenerator : MonoBehaviour
     {
         for (int i = 0; i < ActiveStreetTiles; i++)
         {
-            var s = Instantiate(StreetPrefab, new Vector3(0, 0, (i) * StreetLenght), Quaternion.identity,transform);
+            var s = Instantiate(StreetPrefab, new Vector3(transform.position.x, transform.position.y, (i) * StreetLenght), Quaternion.identity,transform);
             _streetQueue.Enqueue(s);
             _lastAdded = s;
 
