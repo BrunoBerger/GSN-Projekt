@@ -9,7 +9,6 @@ on:
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  PROJECT_PATH: .
 
 jobs:
   build:
@@ -35,9 +34,9 @@ jobs:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-      - uses: game-ci/unity-builder@v2.0-alpha-6
+      - uses: game-ci/unity-builder@v2
         with:
-          projectPath: ${{ env.PROJECT_PATH }}
+          versioning: Semantic
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v2
         with:
