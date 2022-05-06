@@ -9,7 +9,7 @@ on:
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  PROJECT_PATH: ./Retargeting-Implementation
+  PROJECT_PATH: .
 
 jobs:
   build:
