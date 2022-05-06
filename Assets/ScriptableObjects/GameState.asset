@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameState
   m_EditorClassIdentifier: 
   speed: 1
+  chord: 0

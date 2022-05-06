@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [CreateAssetMenu]
-public class GameState : ScriptableObject
+public class AudioClips : ScriptableObject
 {
-    public float speed = 1;
-    public int chord = 0;
+    public List<Chord> chords;
 }
