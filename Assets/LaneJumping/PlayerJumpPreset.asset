@@ -12,37 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d89e0d1ee67ae4c9ba880920b5e23c, type: 3}
   m_Name: PlayerJumpPreset
   m_EditorClassIdentifier: 
-  jumpDuration: 0.2
+  jumpDuration: 0.3
   verticalMovement:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 4.3063684
-      outSlope: 4.3063684
+      inSlope: 6.385708
+      outSlope: 6.385708
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 2
       inWeight: 0
-      outWeight: 0.333111
+      outWeight: 0.2328145
     - serializedVersion: 3
-      time: 0.23100257
-      value: 2.0293903
-      inSlope: 0.24543978
-      outSlope: 0.05009036
-      tangentMode: 1
+      time: 0.5266789
+      value: 1.7561821
+      inSlope: 0.08484792
+      outSlope: 0.08484792
+      tangentMode: 0
       weightedMode: 3
-      inWeight: 0.46695477
-      outWeight: 0.47708267
+      inWeight: 0.4712948
+      outWeight: 0.33086514
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.9571949
-      outSlope: -1.9571949
+      inSlope: -10.379455
+      outSlope: -10.379455
       tangentMode: 0
-      weightedMode: 1
-      inWeight: 0.771479
-      outWeight: 0
+      weightedMode: 0
+      inWeight: 0.09421917
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -52,22 +52,22 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.9039401
-      outSlope: 1.9039401
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.04237288
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.1443836
-      outSlope: 0.1443836
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.1949153
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  offsetOffLane: {x: 0, y: 1.46, z: 0}
+  offsetOffLane: {x: 0, y: 0.6, z: 0}
