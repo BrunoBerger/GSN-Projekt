@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class StreetGenerator : MonoBehaviour
 {
+    [SerializeField] GameState gameState;
+
     public float StreetLenght = 10;
     public float StreetWidth = 5; 
     public float ActiveStreetTiles = 5;
-    public float ScrollSpeed = 1f;
+    private float ScrollSpeed;
+    private float ScrollSpeedFactor = 7f; // If gameState.speed should be taken directly as ScrollSpeed, set to 0
     [Range (0f, 1f)]
     public float DecorationSpawnRate = 0.5f;
     public float DecorationSpawnAreaWidth = 20f;
@@ -48,6 +51,8 @@ public class StreetGenerator : MonoBehaviour
 
     void Update()
     {
+        ScrollSpeed = gameState.speed * ScrollSpeedFactor;
+
         //Street loop
         foreach (var item in _streetQueue)
         {

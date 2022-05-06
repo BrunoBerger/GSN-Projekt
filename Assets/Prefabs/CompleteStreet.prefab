@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b842b68dc280314e9b88eba09b726e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 4ff2533ef39672f4d938a8563cb2dce3, type: 2}
   StreetLenght: 8
   StreetWidth: 5
   ActiveStreetTiles: 10
