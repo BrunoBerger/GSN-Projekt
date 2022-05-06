@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   chord: 0
+  beerCounter: 0
+  danceRush: 0
