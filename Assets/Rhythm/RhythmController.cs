@@ -19,7 +19,6 @@ public class RhythmController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameState.speed = 1;
         tactSpeed = 1 / gameState.speed;
         nextTact = true;
         beatPos = 0;
@@ -46,15 +45,21 @@ public class RhythmController : MonoBehaviour
 
     void endOfRhythm()
     {
-        if (rhythmVisualisation.rhythmCorrect())
+        if (rhythmVisualisation.rhythmCorrect() && gameState.beerCounter > 0)
         {
             tactSpeed /= 1.25f;
             gameState.speed *= 1.25f;
+            gameState.beerCounter -= 1;
+            gameState.danceRush = 3;
         }
-        else if (tactSpeed < slowestTactSpeed)
+        else if (gameState.danceRush == 0 && tactSpeed < slowestTactSpeed)
         {
             tactSpeed *= 1.25f;
             gameState.speed /= 1.25f;
+        }
+        else if(gameState.danceRush > 0)
+        {
+            gameState.danceRush -= 1;
         }
 
         if (gameState.chord < audioClips.chords.Count - 1)
