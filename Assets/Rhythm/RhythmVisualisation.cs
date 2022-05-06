@@ -5,15 +5,7 @@ using UnityEngine.UI;
 
 public class RhythmVisualisation : MonoBehaviour
 {
-    [SerializeField]
-    GameState gameState;
-    [SerializeField]
-    PlayRythm playRythm;
-    [SerializeField]
-    AudioClips audioClips;
     Image[] sprites;
-    bool nextSprite;
-    float slowestTactSpeed;
     void Start()
     {
         sprites = new Image[transform.childCount];
@@ -21,80 +13,59 @@ public class RhythmVisualisation : MonoBehaviour
         {
             sprites[i] = gameObject.transform.GetChild(i).GetComponent<Image>();
         }
-        nextSprite = true;
-        slowestTactSpeed = 1/gameState.speed;
+
     }
 
-    void Update()
+    public void resetAllColors()
     {
-        if (nextSprite)
+        for (int i = 0; i < sprites.Length; i++)
         {
-            nextSprite = false;
-            Image lastSprite;
-            if (playRythm.beatPos == 0)
-                lastSprite = sprites[sprites.Length - 1];
-            else
-                lastSprite = sprites[playRythm.beatPos - 1];
-
-            if (lastSprite.tag == "None" && lastSprite.color == Color.white)
-                lastSprite.color = Color.green;
-            else if (lastSprite.color != Color.green)
-                lastSprite.color = Color.black;
-            sprites[playRythm.beatPos].color = Color.white;
-            StartCoroutine(tact(playRythm.tactSpeed));
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (sprites[playRythm.beatPos].color == Color.white && sprites[playRythm.beatPos].tag == "Left")
-                sprites[playRythm.beatPos].color = Color.green;
-            else
-                sprites[playRythm.beatPos].color = Color.red;
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (sprites[playRythm.beatPos].color == Color.white && sprites[playRythm.beatPos].tag == "Right")
-                sprites[playRythm.beatPos].color = Color.green;
-            else
-                sprites[playRythm.beatPos].color = Color.red;
+            sprites[i].color = Color.black;
         }
     }
 
-    IEnumerator tact(float time)
+    public void up(int beatPos)
     {
-        yield return new WaitForSeconds(time);
-        if (playRythm.beatPos == sprites.Length - 1)
-        {
-            bool allCorrect = true;
-            for (int i = 0; i < sprites.Length; i++)
-            {
-                if (i == sprites.Length - 1 && sprites[i].color != Color.red && sprites[i].tag == "None")
-                    continue;
-                if (sprites[i].color != Color.green)
-                {
-                    allCorrect = false;
-                    break;
-                }
-            }
-            playRythm.beatPos = 0;
-            if (allCorrect)
-            {
-                playRythm.tactSpeed /= 1.25f;
-                gameState.speed *= 1.25f;
-            }
-
-            else if (playRythm.tactSpeed < slowestTactSpeed)
-            {
-                playRythm.tactSpeed *= 1.25f;
-                gameState.speed /= 1.25f;
-            }
-            if (gameState.chord < audioClips.chords.Count - 1)
-                gameState.chord++;
-            else
-                gameState.chord = 0;
-        }
+        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag == "Left")
+            sprites[beatPos].color = Color.green;
         else
-            playRythm.beatPos++;
+            sprites[beatPos].color = Color.red;
+    }
 
-        nextSprite = true;
+    public void down(int beatPos)
+    {
+        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag == "Right")
+            sprites[beatPos].color = Color.green;
+        else
+            sprites[beatPos].color = Color.red;
+    }
+
+    public void onTact(int beatPos)
+    {
+        Image lastSprite;
+        if (beatPos == 0)
+            lastSprite = sprites[sprites.Length - 1];
+        else
+            lastSprite = sprites[beatPos - 1];
+
+        if (lastSprite.tag == "None" && lastSprite.color == Color.white)
+            lastSprite.color = Color.green;
+        else if (lastSprite.color != Color.green)
+            lastSprite.color = Color.black;
+        sprites[beatPos].color = Color.white;
+    }
+
+    public bool rhythmCorrect()
+    {
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (i == sprites.Length - 1 && sprites[i].color != Color.red && sprites[i].tag == "None")
+                continue;
+            if (sprites[i].color != Color.green)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

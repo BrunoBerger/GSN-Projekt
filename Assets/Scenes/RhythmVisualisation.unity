@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1182,9 +1182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca69ae1e05aa56e48b2a0af0b86b8bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 11400000, guid: 4ff2533ef39672f4d938a8563cb2dce3, type: 2}
-  playRythm: {fileID: 1592896973}
-  audioClips: {fileID: 11400000, guid: 4a4b62093d48c904e89455e13c824148, type: 2}
 --- !u!1 &1592896971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,8 +1232,6 @@ MonoBehaviour:
   playerInput: {fileID: 1729367153}
   gameState: {fileID: 11400000, guid: 4ff2533ef39672f4d938a8563cb2dce3, type: 2}
   audioClips: {fileID: 11400000, guid: 4a4b62093d48c904e89455e13c824148, type: 2}
-  tactSpeed: 1
-  beatPos: 0
 --- !u!1 &1729367151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,3 +1512,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987899404}
   m_CullTransparentMesh: 1
+--- !u!1 &2028521854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2028521856}
+  - component: {fileID: 2028521857}
+  m_Layer: 0
+  m_Name: RhythmController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2028521856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028521854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4605, y: 14.588967, z: 233.07845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2028521857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028521854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579ac4ca9f8cf97499e6d6ccbe6117da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 4ff2533ef39672f4d938a8563cb2dce3, type: 2}
+  playRhythm: {fileID: 1592896973}
+  audioClips: {fileID: 11400000, guid: 4a4b62093d48c904e89455e13c824148, type: 2}
+  rhythmVisualisation: {fileID: 1459277481}
+  tactSpeed: 1
