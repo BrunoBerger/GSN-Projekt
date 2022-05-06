@@ -22,7 +22,7 @@ public class RhythmController : MonoBehaviour
         tactSpeed = 1 / gameState.speed;
         nextTact = true;
         beatPos = 0;
-        slowestTactSpeed = 1 / gameState.speed;
+        slowestTactSpeed = tactSpeed;
     }
 
     // Update is called once per frame
@@ -52,8 +52,9 @@ public class RhythmController : MonoBehaviour
             gameState.beerCounter -= 1;
             gameState.danceRush = 3;
         }
-        else if (gameState.danceRush == 0 && tactSpeed < slowestTactSpeed)
+        else if (gameState.danceRush == 0 && tactSpeed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
         {
+            Debug.Log(tactSpeed + " < " + slowestTactSpeed);
             tactSpeed *= 1.25f;
             gameState.speed /= 1.25f;
         }
