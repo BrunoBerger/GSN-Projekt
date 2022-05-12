@@ -21,6 +21,8 @@ public class PlayerHit : MonoBehaviour
         {
             gameState.beerCounter++;
             gameState.speed += 1;
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            // TODO: some sound effect
         }
     }
 }
