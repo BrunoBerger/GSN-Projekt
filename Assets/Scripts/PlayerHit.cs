@@ -17,6 +17,10 @@ public class PlayerHit : MonoBehaviour
                 gameState.speed = 1;
             }
         }
-
+        if (other.gameObject.tag == "Collectable")
+        {
+            gameState.beerCounter++;
+            gameState.speed += 1;
+        }
     }
 }

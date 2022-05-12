@@ -14,6 +14,7 @@ public class JumpBetweenLanes : MonoBehaviour
     Vector3 jumpStartPos;
     Vector3 jumpEndPos;
 
+    [SerializeField] GameState gameState;
     [SerializeField] JumpPreset jumpPreset = null;
 
 
@@ -82,7 +83,6 @@ public class JumpBetweenLanes : MonoBehaviour
             }
         }
     }
-
     void StartNewJump(int jumpDirectionAndDistance)
     {
         currentlyJumping = true;

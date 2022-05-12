@@ -31,7 +31,7 @@ public class StreetGenerator : MonoBehaviour
     GameObject[] lanes;
     private List<GameObject> _obstaclesList = new List<GameObject> ();
 
-    private Queue<GameObject> _decorationQueue = new Queue<GameObject>();
+    public Queue<GameObject> _decorationQueue = new Queue<GameObject>();
 
 
     void Start()
