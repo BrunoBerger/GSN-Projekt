@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class JumpBetweenLanes : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class JumpBetweenLanes : MonoBehaviour
 
     [SerializeField] GameState gameState;
     [SerializeField] JumpPreset jumpPreset = null;
-
+    [SerializeField] RhythmController rhythmController;
 
     void checkSetup()
     {
@@ -57,11 +58,6 @@ public class JumpBetweenLanes : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && !currentlyJumping)
-            StartNewJump(-1);
-        else if (Input.GetMouseButtonDown(1) && !currentlyJumping)
-            StartNewJump(+1);
-
         if (currentlyJumping)
         {
             float timeJumped = Time.time - jumpStartTime;
@@ -82,6 +78,27 @@ public class JumpBetweenLanes : MonoBehaviour
                 TpToCurrentLane(); // To correct any slight differences
             }
         }
+    }
+
+    public void jump(InputAction.CallbackContext context)
+    {
+        Vector2 direction = context.ReadValue<Vector2>();
+        
+        if (direction.x < 0 && !currentlyJumping)
+        {
+            StartNewJump(-1);
+            rhythmController.play();
+        }
+        else if (direction.x > 0 && !currentlyJumping)
+        {
+            StartNewJump(+1);
+            rhythmController.play();
+        }
+        else if(direction.y < 0 && !currentlyJumping)
+        {
+            rhythmController.play();
+        }
+        
     }
     void StartNewJump(int jumpDirectionAndDistance)
     {

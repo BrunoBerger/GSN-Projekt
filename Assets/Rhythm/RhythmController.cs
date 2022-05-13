@@ -12,17 +12,15 @@ public class RhythmController : MonoBehaviour
     AudioClips audioClips;
     [SerializeField]
     RhythmVisualisation rhythmVisualisation;
-    public float tactSpeed = 1f;
     int beatPos = 0;
     bool nextTact = false;
     float slowestTactSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        tactSpeed = 1 / gameState.speed;
         nextTact = true;
         beatPos = 0;
-        slowestTactSpeed = tactSpeed;
+        slowestTactSpeed = 1 / gameState.speed;
     }
 
     // Update is called once per frame
@@ -30,32 +28,25 @@ public class RhythmController : MonoBehaviour
     {
         if(nextTact)
             StartCoroutine(tact());
+    }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            rhythmVisualisation.up(beatPos);
-            playRhythm.up();
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            rhythmVisualisation.down(beatPos);
-            playRhythm.down();
-        }
+    public void play()
+    {
+        rhythmVisualisation.jump(beatPos);
+        playRhythm.up();
     }
 
     void endOfRhythm()
     {
         if (rhythmVisualisation.rhythmCorrect() && gameState.beerCounter > 0)
         {
-            tactSpeed /= 1.25f;
             gameState.speed *= 1.25f;
             gameState.beerCounter -= 1;
             gameState.danceRush = 3;
         }
-        else if (gameState.danceRush == 0 && tactSpeed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
+        else if (gameState.danceRush == 0 && 1 / gameState.speed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
         {
-            Debug.Log(tactSpeed + " < " + slowestTactSpeed);
-            tactSpeed *= 1.25f;
+            Debug.Log(1 / gameState.speed + " < " + slowestTactSpeed);
             gameState.speed /= 1.25f;
         }
         else if(gameState.danceRush > 0)
@@ -76,9 +67,9 @@ public class RhythmController : MonoBehaviour
 
         nextTact = false;
         rhythmVisualisation.onTact(beatPos);
-        yield return new WaitForSeconds(tactSpeed/2);
+        yield return new WaitForSeconds(1 / (2 * gameState.speed));
         playRhythm.onTact(beatPos);
-        yield return new WaitForSeconds(tactSpeed/2);
+        yield return new WaitForSeconds(1 / (2 * gameState.speed));
 
         if (beatPos == 7)
         {

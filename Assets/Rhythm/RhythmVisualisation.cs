@@ -24,9 +24,9 @@ public class RhythmVisualisation : MonoBehaviour
         }
     }
 
-    public void up(int beatPos)
+    public void jump(int beatPos)
     {
-        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag == "Left")
+        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag != "None")
             sprites[beatPos].color = Color.green;
         else
             sprites[beatPos].color = Color.red;
@@ -34,7 +34,7 @@ public class RhythmVisualisation : MonoBehaviour
 
     public void down(int beatPos)
     {
-        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag == "Right")
+        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag != "None")
             sprites[beatPos].color = Color.green;
         else
             sprites[beatPos].color = Color.red;
