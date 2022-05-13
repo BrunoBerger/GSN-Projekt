@@ -50,10 +50,12 @@ public class BeerGiverAi : MonoBehaviour
         if (!currentlyJumping && timeSinceLastJump > minimumTimeBetweenJumps)
         {
             dropBeer();
-            if (Random.value < 0.5f)
+            if (Random.value < 0.4f)
                 StartNewJump(-1);
-            else
+            else if (Random.value < 0.8f)
                 StartNewJump(+1);
+            else
+                StartNewJump(0);
         }
 
 
@@ -82,8 +84,13 @@ public class BeerGiverAi : MonoBehaviour
 
     void dropBeer()
     {
-        //float beerScrollSpeed = streetGenerator.ScrollSpeed;
-        GameObject newBeer = Instantiate(beerPrefab, transform.position, Quaternion.identity);
+        Vector3 dropPos = new Vector3(
+            lanes[currentLane].gameObject.transform.position.x,
+            lanes[currentLane].gameObject.transform.position.y,
+            transform.position.z
+        );
+        GameObject newBeer = Instantiate(beerPrefab, dropPos, Quaternion.identity);
+        //TODO play vfx + sfx
         streetGenerator._decorationQueue.Enqueue(newBeer);
     }
 
