@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LevelSpawner.unity
+    path: Assets/Scenes/Alpha 0.1.unity
     guid: 41e2e17239164ed4a8562bd46c4550f4
   - enabled: 1
     path: Assets/Scenes/CombinationTest.unity
@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/RhythmVisualisation.unity
     guid: 1eb3d1758e8c02344ac17604b48b3e06
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/DayNight.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/ComboTest 1.unity

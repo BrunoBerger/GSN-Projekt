@@ -20,7 +20,7 @@ public class PlayerHit : MonoBehaviour
         if (other.gameObject.tag == "Collectable")
         {
             gameState.beerCounter++;
-            gameState.speed += 1;
+            // gameState.speed += 1;
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
             // TODO: some sound effect
         }
