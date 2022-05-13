@@ -9,6 +9,7 @@ TagManager:
   - Right
   - None
   - Obstacle
+  - Collectable
   layers:
   - Default
   - TransparentFX

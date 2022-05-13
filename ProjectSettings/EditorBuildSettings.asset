@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CombinationTest.unity
-    guid: eb7065e00a0729d4e9558240dce25a91
-  - enabled: 1
     path: Assets/Scenes/LevelSpawner.unity
     guid: 41e2e17239164ed4a8562bd46c4550f4
   - enabled: 1
+    path: Assets/Scenes/CombinationTest.unity
+    guid: eb7065e00a0729d4e9558240dce25a91
+  - enabled: 1
     path: Assets/Scenes/RhythmVisualisation.unity
     guid: 1eb3d1758e8c02344ac17604b48b3e06
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ComboTest 1.unity
+    guid: 14f660c89bfe4f84e84aef7d0f34f307
   m_configObjects: {}

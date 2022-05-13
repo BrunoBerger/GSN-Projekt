@@ -4,8 +4,8 @@ on:
   workflow_dispatch: {}
   #schedule:
     #- cron: "0 4 * * *"    #creates a nightly-build
-  #pull_request: {}
-  #push: { branches: [main, master, develop] }
+  pull_request: {}
+  push: { branches: [main, master, develop] }
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
