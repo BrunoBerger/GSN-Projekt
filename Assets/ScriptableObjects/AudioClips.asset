@@ -13,7 +13,35 @@ MonoBehaviour:
   m_Name: AudioClips
   m_EditorClassIdentifier: 
   chords:
-  - upMusic: {fileID: 8300000, guid: b9ea7700b1ff0be47bfd344ce3909a3e, type: 3}
-    downMusic: {fileID: 8300000, guid: b9ea7700b1ff0be47bfd344ce3909a3e, type: 3}
-    upPlayer: {fileID: 8300000, guid: 2b445f8221a8f0a46850fb920148a9b0, type: 3}
-    downPlayer: {fileID: 8300000, guid: 2b445f8221a8f0a46850fb920148a9b0, type: 3}
+  - upMusic: {fileID: 8300000, guid: 27872daf0ac775440a455231677eeb8a, type: 3}
+    downMusic: {fileID: 8300000, guid: 0c684cdddd5f55348a47b2034c43a401, type: 3}
+    upPlayer: {fileID: 8300000, guid: 6c1ebef4e91e68248b93c2fb152401f5, type: 3}
+    downPlayer: {fileID: 8300000, guid: faf86dfac7aabe74493fad374eeb398b, type: 3}
+  - upMusic: {fileID: 8300000, guid: 27872daf0ac775440a455231677eeb8a, type: 3}
+    downMusic: {fileID: 8300000, guid: 0c684cdddd5f55348a47b2034c43a401, type: 3}
+    upPlayer: {fileID: 8300000, guid: 6c1ebef4e91e68248b93c2fb152401f5, type: 3}
+    downPlayer: {fileID: 8300000, guid: faf86dfac7aabe74493fad374eeb398b, type: 3}
+  - upMusic: {fileID: 8300000, guid: 822250c2217d4f6468f86fee0a8ff97a, type: 3}
+    downMusic: {fileID: 8300000, guid: eb441cd5104220940a8b93499f1152e7, type: 3}
+    upPlayer: {fileID: 8300000, guid: bc684bf96d2d47a429071542bcb2c141, type: 3}
+    downPlayer: {fileID: 8300000, guid: 8548a16367e4a0641a181a56b257a403, type: 3}
+  - upMusic: {fileID: 8300000, guid: 822250c2217d4f6468f86fee0a8ff97a, type: 3}
+    downMusic: {fileID: 8300000, guid: eb441cd5104220940a8b93499f1152e7, type: 3}
+    upPlayer: {fileID: 8300000, guid: bc684bf96d2d47a429071542bcb2c141, type: 3}
+    downPlayer: {fileID: 8300000, guid: 8548a16367e4a0641a181a56b257a403, type: 3}
+  - upMusic: {fileID: 8300000, guid: 67bf794138827634980f72a3acb4cb27, type: 3}
+    downMusic: {fileID: 8300000, guid: 4998df943e0546b4bae7b2bc7a686dfa, type: 3}
+    upPlayer: {fileID: 8300000, guid: bc684bf96d2d47a429071542bcb2c141, type: 3}
+    downPlayer: {fileID: 8300000, guid: 8548a16367e4a0641a181a56b257a403, type: 3}
+  - upMusic: {fileID: 8300000, guid: 67bf794138827634980f72a3acb4cb27, type: 3}
+    downMusic: {fileID: 8300000, guid: 4998df943e0546b4bae7b2bc7a686dfa, type: 3}
+    upPlayer: {fileID: 8300000, guid: ec3a0a3683c89694a9313b4f2c0e8e68, type: 3}
+    downPlayer: {fileID: 8300000, guid: 28c8ac79dcd4e5d4981f889a6614e6af, type: 3}
+  - upMusic: {fileID: 8300000, guid: a5b20020309718140afbaf1ce098378e, type: 3}
+    downMusic: {fileID: 8300000, guid: 8cdfaed5026c5c447b4b94c4bc0420d2, type: 3}
+    upPlayer: {fileID: 8300000, guid: e3987b13bd7a3e24a947ac16f4d110fa, type: 3}
+    downPlayer: {fileID: 8300000, guid: b53f0f32a0c206b40b767a101ecb276f, type: 3}
+  - upMusic: {fileID: 8300000, guid: a5b20020309718140afbaf1ce098378e, type: 3}
+    downMusic: {fileID: 8300000, guid: 8cdfaed5026c5c447b4b94c4bc0420d2, type: 3}
+    upPlayer: {fileID: 8300000, guid: e3987b13bd7a3e24a947ac16f4d110fa, type: 3}
+    downPlayer: {fileID: 8300000, guid: b53f0f32a0c206b40b767a101ecb276f, type: 3}

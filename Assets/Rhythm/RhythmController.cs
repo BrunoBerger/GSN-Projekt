@@ -33,7 +33,7 @@ public class RhythmController : MonoBehaviour
     public void play()
     {
         rhythmVisualisation.jump(beatPos);
-        playRhythm.up();
+        playRhythm.play(beatPos);
     }
 
     void endOfRhythm()
