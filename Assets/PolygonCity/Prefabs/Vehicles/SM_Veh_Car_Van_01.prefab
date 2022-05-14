@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 2379450}
   m_Layer: 0
   m_Name: SM_Veh_Car_Van_Door_r
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 2371386}
   m_Layer: 0
   m_Name: SM_Veh_Car_Van_Door_l
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

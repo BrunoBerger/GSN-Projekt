@@ -13,7 +13,7 @@ public class StreetGenerator : MonoBehaviour
     public  float ActiveStreetTiles = 5;
     private float ScrollSpeed;
     [Range(1.1f,100f)]
-    public float ScrollSpeedFactor = 7f; // If gameState.speed should be taken directly as ScrollSpeed, set to 0
+    public float ScrollSpeedFactor = 7f; // If gameState.speed should be taken directly as ScrollSpeed, set to 1
     public float Carspeed = 5;
     [Range(0f, 1f)]
     public float ObstacleSpawnRate = 0.5f;
@@ -23,6 +23,7 @@ public class StreetGenerator : MonoBehaviour
 
     public GameObject StreetPrefab;
     public GameObject[] ObstaclePrefabs;
+    public Material[] ObstacleMaterials;
     public GameObject DecorationPrefab;
 
     private Queue<GameObject> _streetQueue = new Queue<GameObject>();
@@ -65,6 +66,7 @@ public class StreetGenerator : MonoBehaviour
 
     void Update()
     {
+
         ScrollSpeed = gameState.speed * ScrollSpeedFactor;
 
         //Street loop
@@ -152,6 +154,16 @@ public class StreetGenerator : MonoBehaviour
         {
             o.transform.Rotate(Vector3.up, 180);
         }
+        var randomMaterialIndex= (int)(Random.value * ObstacleMaterials.Length);
+        var meshRenderer = o.GetComponentsInChildren<MeshRenderer>();
+        foreach (var r in meshRenderer)
+        {
+            if(r.gameObject.tag == "Obstacle")
+            {
+                r.material = ObstacleMaterials[randomMaterialIndex];
+            }
+        }
+        
         _obstaclesList.Add(o);
 
 

@@ -363,11 +363,23 @@ MonoBehaviour:
   - {fileID: 164098, guid: 416c46ca128db5f4bb76f235b4f991d5, type: 3}
   - {fileID: 157676, guid: fcd06c9319e99cc4bbee7ce7730d9422, type: 3}
   - {fileID: 141870, guid: edf6cb56e12fba648b2cf1e7dfa5bf88, type: 3}
-  - {fileID: 189930, guid: f539f0390d17a9f4a922b722e47998fe, type: 3}
   - {fileID: 198730, guid: 85ac88d7c46e0ea4583870a98cc13580, type: 3}
   - {fileID: 127632, guid: 0383b854a926f1643b20f9c7cdb2e4de, type: 3}
   - {fileID: 175378, guid: a916a44328d322240bd1aaaca22fc8a7, type: 3}
   - {fileID: 130278, guid: 94469aeaca2d49442af381840b70bb6c, type: 3}
+  ObstacleMaterials:
+  - {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
+  - {fileID: 2100000, guid: a8e32d2cd442e564aa46c99f0ae7c0c8, type: 2}
+  - {fileID: 2100000, guid: c01b7c8cb1175b54aab24b670c2d58dd, type: 2}
+  - {fileID: 2100000, guid: 49ef76ea47782eb4b93ac08b234fd6c3, type: 2}
+  - {fileID: 2100000, guid: ee26ded8aeae32044836748251f93891, type: 2}
+  - {fileID: 2100000, guid: f145fd98abc7a354f83c3a2e8df80a75, type: 2}
+  - {fileID: 2100000, guid: 97942cb5527e6f24eb8b8f5c86f8744d, type: 2}
+  - {fileID: 2100000, guid: ae4870cba172f524491e4431ce936a9d, type: 2}
+  - {fileID: 2100000, guid: ac4517348fefb604bbf10afeb378a491, type: 2}
+  - {fileID: 2100000, guid: ee5d59fcc8497a641905c26644c20880, type: 2}
+  - {fileID: 2100000, guid: 912f300affe60c543ac3ac40ef980902, type: 2}
+  - {fileID: 2100000, guid: bb694a94be4a3c64ca9ef44c62415782, type: 2}
   DecorationPrefab: {fileID: 8647712531606356591, guid: 597a1a8ae490c4e4793bfa3cf06ce5bc,
     type: 3}
 --- !u!1 &8181204136615137335

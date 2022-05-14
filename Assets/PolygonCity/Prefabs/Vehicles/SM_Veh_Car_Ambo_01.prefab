@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 2326082}
   m_Layer: 0
   m_Name: SM_Veh_Car_Ambo_Door_l
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 2321892}
   m_Layer: 0
   m_Name: SM_Veh_Car_Ambo_Door_r
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
