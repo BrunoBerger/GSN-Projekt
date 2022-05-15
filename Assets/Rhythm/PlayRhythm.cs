@@ -23,6 +23,20 @@ public class PlayRhythm : MonoBehaviour
     AudioClips audioClips;
     Strum[] pattern = { Strum.down, Strum.none, Strum.down, Strum.none, Strum.down, Strum.none, Strum.down, Strum.up };
 
+    public void play(int beatPos)
+    {
+        playerInput.Stop();
+        if (pattern[beatPos] == Strum.up)
+        {
+            playerInput.clip = audioClips.chords[gameState.chord].upPlayer;
+        }
+        else 
+        {
+            playerInput.clip = audioClips.chords[gameState.chord].downPlayer;
+        }
+        playerInput.Play();
+    }
+
     public void up()
     {
         playerInput.Stop();
@@ -34,6 +48,13 @@ public class PlayRhythm : MonoBehaviour
     {
         playerInput.Stop();
         playerInput.clip = audioClips.chords[gameState.chord].downPlayer;
+        playerInput.Play();
+    }
+
+    public void throwBeer()
+    {
+        playerInput.Stop();
+        playerInput.clip = audioClips.chords[gameState.chord].throwPlayer;
         playerInput.Play();
     }
 

@@ -24,20 +24,14 @@ public class RhythmVisualisation : MonoBehaviour
         }
     }
 
-    public void up(int beatPos)
+    public void check(int beatPos)
     {
-        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag == "Left")
+        if (sprites[beatPos].tag == "None")
+            return;
+        if (sprites[beatPos].color == Color.white)
             sprites[beatPos].color = Color.green;
-        else
-            sprites[beatPos].color = Color.red;
-    }
-
-    public void down(int beatPos)
-    {
-        if (sprites[beatPos].color == Color.white && sprites[beatPos].tag == "Right")
-            sprites[beatPos].color = Color.green;
-        else
-            sprites[beatPos].color = Color.red;
+        // else
+        //     sprites[beatPos].color = Color.red;
     }
 
     public void onTact(int beatPos)

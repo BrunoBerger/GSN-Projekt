@@ -8,7 +8,7 @@ public class JumpBetweenLanes : MonoBehaviour
     GameObject[] lanes;
     int currentLane;
     int targetLane;
-    bool currentlyJumping = false;
+    public bool currentlyJumping = false;
     float jumpStartTime;
     float percentJumped;
     Vector3 jumpStartPos;
@@ -16,7 +16,6 @@ public class JumpBetweenLanes : MonoBehaviour
 
     [SerializeField] GameState gameState;
     [SerializeField] JumpPreset jumpPreset = null;
-
 
     void checkSetup()
     {
@@ -57,11 +56,6 @@ public class JumpBetweenLanes : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && !currentlyJumping)
-            StartNewJump(-1);
-        else if (Input.GetMouseButtonDown(1) && !currentlyJumping)
-            StartNewJump(+1);
-
         if (currentlyJumping)
         {
             float timeJumped = Time.time - jumpStartTime;
@@ -83,7 +77,9 @@ public class JumpBetweenLanes : MonoBehaviour
             }
         }
     }
-    void StartNewJump(int jumpDirectionAndDistance)
+
+    
+    public void StartNewJump(int jumpDirectionAndDistance)
     {
         currentlyJumping = true;
         targetLane = GetValidLane(jumpDirectionAndDistance);
