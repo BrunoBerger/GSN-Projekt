@@ -10,11 +10,11 @@ public class PlayerHit : MonoBehaviour
     {
         if(other.gameObject.tag == "Obstacle")
         {
-            if (gameState.speed > 2)
-                gameState.speed -= 1;
+            if (gameState.speed > 1)
+                gameState.speed /= 1.25f;
             else
             {
-                gameState.speed = 1;
+                gameState.speed *= 1.25f;
             }
         }
         if (other.gameObject.tag == "Collectable")

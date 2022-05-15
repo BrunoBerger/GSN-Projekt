@@ -32,8 +32,26 @@ public class RhythmController : MonoBehaviour
 
     public void play()
     {
-        rhythmVisualisation.jump(beatPos);
+        rhythmVisualisation.check(beatPos);
         playRhythm.play(beatPos);
+    }
+
+    public void up()
+    {
+        rhythmVisualisation.check(beatPos);
+        playRhythm.up();
+    }
+
+    public void down()
+    {
+        rhythmVisualisation.check(beatPos);
+        playRhythm.down();
+    }
+
+    public void throwBeer()
+    {
+        rhythmVisualisation.check(beatPos);
+        playRhythm.throwBeer();
     }
 
     void endOfRhythm()
@@ -46,7 +64,6 @@ public class RhythmController : MonoBehaviour
         }
         else if (gameState.danceRush == 0 && 1 / gameState.speed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
         {
-            Debug.Log(1 / gameState.speed + " < " + slowestTactSpeed);
             gameState.speed /= 1.25f;
         }
         else if(gameState.danceRush > 0)

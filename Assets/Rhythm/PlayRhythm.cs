@@ -51,6 +51,13 @@ public class PlayRhythm : MonoBehaviour
         playerInput.Play();
     }
 
+    public void throwBeer()
+    {
+        playerInput.Stop();
+        playerInput.clip = audioClips.chords[gameState.chord].throwPlayer;
+        playerInput.Play();
+    }
+
     public void onTact(int beatPos)
     {
         if (pattern[beatPos] == Strum.up)
