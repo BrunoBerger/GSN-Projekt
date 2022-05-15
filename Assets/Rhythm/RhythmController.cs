@@ -12,6 +12,8 @@ public class RhythmController : MonoBehaviour
     AudioClips audioClips;
     [SerializeField]
     RhythmVisualisation rhythmVisualisation;
+
+    [SerializeField] JumpPreset jumpPreset;
     int beatPos = 0;
     bool nextTact = false;
     float slowestTactSpeed;
@@ -58,13 +60,11 @@ public class RhythmController : MonoBehaviour
     {
         if (rhythmVisualisation.rhythmCorrect() && gameState.beerCounter > 0)
         {
-            gameState.speed *= 1.25f;
-            gameState.beerCounter -= 1;
-            gameState.danceRush = 3;
+            drinkBeer();
         }
         else if (gameState.danceRush == 0 && 1 / gameState.speed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
         {
-            gameState.speed /= 1.25f;
+            getSober();
         }
         else if(gameState.danceRush > 0)
         {
@@ -75,6 +75,20 @@ public class RhythmController : MonoBehaviour
             gameState.chord++;
         else
             gameState.chord = 0;
+    }
+
+    public void drinkBeer()
+    {
+        gameState.speed *= 1.25f;
+        gameState.beerCounter -= 1;
+        gameState.danceRush = 3;
+        jumpPreset.jumpDuration /= 1.25f;
+    }
+
+    public void getSober()
+    {
+        gameState.speed /= 1.25f;
+        jumpPreset.jumpDuration *= 1.25f;
     }
 
     IEnumerator tact()

@@ -5,17 +5,14 @@ using UnityEngine;
 public class PlayerHit : MonoBehaviour
 {
     [SerializeField] GameState gameState;
+    [SerializeField] RhythmController rhythmController;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Obstacle")
         {
             if (gameState.speed > 1)
-                gameState.speed /= 1.25f;
-            else
-            {
-                gameState.speed *= 1.25f;
-            }
+                rhythmController.getSober();
         }
         if (other.gameObject.tag == "Collectable")
         {

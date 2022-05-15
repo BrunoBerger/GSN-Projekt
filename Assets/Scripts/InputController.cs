@@ -9,15 +9,6 @@ public class InputController : MonoBehaviour
     [SerializeField] JumpBetweenLanes jumpBetweenLanes;
     [SerializeField] RhythmController rhythmController;
     [SerializeField] BeerThrowerPlayer beerThrowerPlayer;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void DirectionInput(InputAction.CallbackContext context)
     {

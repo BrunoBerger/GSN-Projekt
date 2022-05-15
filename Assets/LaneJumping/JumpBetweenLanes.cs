@@ -16,6 +16,7 @@ public class JumpBetweenLanes : MonoBehaviour
 
     [SerializeField] GameState gameState;
     [SerializeField] JumpPreset jumpPreset = null;
+    [SerializeField] AnimationStateController animationStateController;
 
     void checkSetup()
     {
@@ -73,6 +74,7 @@ public class JumpBetweenLanes : MonoBehaviour
             {
                 currentlyJumping = false;
                 currentLane = targetLane;
+                animationStateController.stopJump();
                 TpToCurrentLane(); // To correct any slight differences
             }
         }
@@ -86,6 +88,7 @@ public class JumpBetweenLanes : MonoBehaviour
         jumpStartPos = transform.position;
         jumpEndPos = lanes[targetLane].transform.position + jumpPreset.offsetOffLane;
         jumpStartTime = Time.time;
+        animationStateController.startJump();
     }
     int GetValidLane(int _lane = 0)
     {

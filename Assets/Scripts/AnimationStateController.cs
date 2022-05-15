@@ -16,23 +16,22 @@ public class AnimationStateController : MonoBehaviour
         isDroppingBeerHash = Animator.StringToHash("IsDroppingBeer");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void startJump()
     {
-        bool jumpPressed = Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1);
-        bool dropPressed = Input.GetKeyDown(KeyCode.Space);
+        animator.SetBool(isJumpingHash, true);
+    }
 
-        if (jumpPressed)
-            animator.SetBool(isJumpingHash, true);
+    public void stopJump()
+    {
+        animator.SetBool(isJumpingHash, false);
+    }
 
-        if (!jumpPressed)
-            animator.SetBool(isJumpingHash, false);
-
-        if (dropPressed)
-            animator.SetBool(isDroppingBeerHash, true);
-
-        if (!dropPressed)
-            animator.SetBool(isDroppingBeerHash, false);
-        
+    public void startDrop()
+    {
+        animator.SetBool(isDroppingBeerHash, true);
+    }
+    public void stopDrop()
+    {
+        animator.SetBool(isDroppingBeerHash, false);
     }
 }

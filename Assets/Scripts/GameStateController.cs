@@ -8,6 +8,8 @@ public class GameStateController : MonoBehaviour
     [SerializeField]
     GameState gameState;
     [SerializeField]
+    JumpPreset jumpPreset;
+    [SerializeField]
     TMP_Text speed;
     [SerializeField]
     TMP_Text beerCounter;
@@ -27,6 +29,7 @@ public class GameStateController : MonoBehaviour
         danceRush.text = "0";
         danceRush.enabled = false;
         danceRushVisuals.SetActive(false);
+        jumpPreset.jumpDuration = 0.5f;
     }
 
     // Update is called once per frame
