@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class GameStateController : MonoBehaviour
 {
@@ -30,6 +28,7 @@ public class GameStateController : MonoBehaviour
         danceRush.enabled = false;
         danceRushVisuals.SetActive(false);
         jumpPreset.jumpDuration = 0.5f;
+        gameState.police = 0;
     }
 
     // Update is called once per frame
