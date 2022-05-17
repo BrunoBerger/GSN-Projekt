@@ -10,9 +10,11 @@ public class PoliceController : MonoBehaviour
     [SerializeField]
     Canvas endScreenCanvas;
     [SerializeField]
-    float worstPoliceCatchupSeconds = 120;
+    float worstPoliceCatchupSeconds = 60;
     [SerializeField]
-    float earliestPoliceEncounter = 30;
+    float earliestPoliceEncounter = 20;
+    [SerializeField]
+    float policeAccelerationSeconds = 7.5f;
     [SerializeField]
     Vector3 sirenNear = new(0f, 0.7f, -3.84f);
     [SerializeField]
@@ -33,8 +35,8 @@ public class PoliceController : MonoBehaviour
     {
         if (Time.fixedTime < _cooldownTime) return;
         gameState.policeChange = MathF.Min(
-            gameState.policeChange + (Time.fixedDeltaTime / worstPoliceCatchupSeconds),
-            1 / worstPoliceCatchupSeconds);
+            gameState.policeChange + (Time.fixedDeltaTime / worstPoliceCatchupSeconds / policeAccelerationSeconds),
+            (1 / worstPoliceCatchupSeconds) / gameState.speed);
         gameState.police = MathF.Max(gameState.police + (Time.fixedDeltaTime * gameState.policeChange), 0.0f);
         if (gameState.police >= 1.0f)
         {
