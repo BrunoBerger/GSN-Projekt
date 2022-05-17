@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/RythmRework.unity
+    guid: de3cfb27f3ba79e419a62400d05db627
+  - enabled: 1
     path: Assets/Scenes/Alpha 0.1.unity
     guid: 41e2e17239164ed4a8562bd46c4550f4
   - enabled: 1
@@ -13,5 +16,5 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Police.unity
-    guid: 720c8b5ade83c1d9cb8c769f3edc54c3
+    guid: 4a8f912e2442876d99b3e99b672a83b8
   m_configObjects: {}

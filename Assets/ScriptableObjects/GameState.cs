@@ -9,4 +9,6 @@ public class GameState : ScriptableObject
     public int chord = 0;
     public int beerCounter = 1;
     public int danceRush = 0;
+    public float police = 0;
+    public float policeChange = 0;
 }

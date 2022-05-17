@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c9466264ab860d6669643a9eb393405c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameState: {fileID: 11400000, guid: 4ff2533ef39672f4d938a8563cb2dce3, type: 2}
+  - policePrefab: {instanceID: 0}
+  - endScreenCanvas: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
