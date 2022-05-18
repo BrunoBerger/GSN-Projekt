@@ -47,9 +47,16 @@ public class BeerGiverAi : MonoBehaviour
     void Update()
     {
         timeSinceLastJump += Time.deltaTime;
+
+
         if (!currentlyJumping && timeSinceLastJump > minimumTimeBetweenJumps)
         {
-            dropBeer();
+
+            GameObject newBeer = Instantiate(beerPrefab, transform.position, Quaternion.identity);
+            streetGenerator._decorationQueue.Enqueue(newBeer);
+            StartCoroutine(dropBeer(newBeer));
+
+            // New Jump
             if (Random.value < 0.4f)
                 StartNewJump(-1);
             else if (Random.value < 0.8f)
@@ -57,7 +64,6 @@ public class BeerGiverAi : MonoBehaviour
             else
                 StartNewJump(0);
         }
-
 
         if (currentlyJumping)
         {
@@ -82,16 +88,26 @@ public class BeerGiverAi : MonoBehaviour
     }
 
 
-    void dropBeer()
+    IEnumerator dropBeer(GameObject beer)
     {
         Vector3 dropPos = new Vector3(
             lanes[currentLane].gameObject.transform.position.x,
-            lanes[currentLane].gameObject.transform.position.y,
+            lanes[currentLane].gameObject.transform.position.y + 0.35f,
             transform.position.z
         );
-        GameObject newBeer = Instantiate(beerPrefab, dropPos, Quaternion.identity);
-        //TODO play vfx + sfx
-        streetGenerator._decorationQueue.Enqueue(newBeer);
+        Vector3 startPos = transform.position;
+        float fallPercent = 0;
+        while (fallPercent <= 1)
+        {
+            Vector3 lerped = Vector3.Lerp(startPos, dropPos, fallPercent);
+            beer.transform.position = new Vector3(
+                beer.transform.position.x,
+                lerped.y,
+                beer.transform.position.z
+            );
+            fallPercent += 0.02f;
+            yield return null;
+        }
     }
 
     void StartNewJump(int jumpDirectionAndDistance)

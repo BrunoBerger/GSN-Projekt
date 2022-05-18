@@ -18,7 +18,8 @@ public class PlayerHit : MonoBehaviour
         {
             gameState.beerCounter++;
             // gameState.speed += 1;
-            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            //other.gameObject.GetComponent<MeshRenderer>().enabled = false; // Doesnt work with keg-prefab
+            other.gameObject.transform.localScale = new Vector3(0, 0, 0);
             // TODO: some sound effect
         }
     }

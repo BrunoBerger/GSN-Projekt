@@ -51,7 +51,7 @@ MonoBehaviour:
   minimumTimeBetweenJumps: 2.43
   maximumTimeBetweenJumps: 4
   timeSinceLastJump: 0
-  beerPrefab: {fileID: 652412832264747269, guid: 4bafa7b90d02c7a48940a760cc071095,
+  beerPrefab: {fileID: 4841010644791425880, guid: 05600f345986562458eb1c0e3e9f7877,
     type: 3}
   streetGenerator: {fileID: 0}
 --- !u!1001 &8346747261210903972
