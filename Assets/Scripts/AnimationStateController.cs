@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class AnimationStateController : MonoBehaviour
 {
-
+    public GameState gameState;
     Animator animator;
-    int isJumpingHash, isDroppingBeerHash;
+    int isJumpingHash, dropBeerHash, animationSpeedHash, dieHash, drinkHash;
+    bool pauseTripping = false;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         isJumpingHash = Animator.StringToHash("IsJumping");
-        isDroppingBeerHash = Animator.StringToHash("IsDroppingBeer");
+        dropBeerHash = Animator.StringToHash("DropBeer");
+        animationSpeedHash = Animator.StringToHash("AnimationSpeed");
+        dieHash = Animator.StringToHash("Die");
+        drinkHash = Animator.StringToHash("Drink");
+    }
+
+    private void Update()
+    {
+        animator.SetFloat(animationSpeedHash, (gameState.speed * 0.5f));
     }
 
     public void startJump()
@@ -26,12 +35,34 @@ public class AnimationStateController : MonoBehaviour
         animator.SetBool(isJumpingHash, false);
     }
 
-    public void startDrop()
+    public void dropBeer()
     {
-        animator.SetBool(isDroppingBeerHash, true);
+        animator.SetTrigger(dropBeerHash);
     }
-    public void stopDrop()
+
+    public void die()
     {
-        animator.SetBool(isDroppingBeerHash, false);
+        animator.SetTrigger(dieHash);
+    }
+
+    public void drink()
+    {
+        animator.SetTrigger(drinkHash);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Obstacle" && !pauseTripping)
+        {
+            animator.SetTrigger("Hit");
+            StartCoroutine(PauseTrippingAnimation());
+        }
+    }
+
+    IEnumerator PauseTrippingAnimation()
+    {
+        pauseTripping = true;
+        yield return new WaitForSeconds(1);
+        pauseTripping = false;
     }
 }

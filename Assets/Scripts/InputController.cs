@@ -9,6 +9,7 @@ public class InputController : MonoBehaviour
     [SerializeField] JumpBetweenLanes jumpBetweenLanes;
     [SerializeField] RhythmController rhythmController;
     [SerializeField] BeerThrowerPlayer beerThrowerPlayer;
+    [SerializeField] AnimationStateController animationStateController;
 
     public void DirectionInput(InputAction.CallbackContext context)
     {
@@ -31,6 +32,10 @@ public class InputController : MonoBehaviour
             gameState.beerCounter -= 1;
             beerThrowerPlayer.dropBeer();
             rhythmController.throwBeer();
+        }
+        else if (direction.y > 0 && gameState.beerCounter > 0)
+        {
+            animationStateController.drink();
         }
 
     }
