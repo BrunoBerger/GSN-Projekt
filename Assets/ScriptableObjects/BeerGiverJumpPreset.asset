@@ -19,17 +19,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.8166925
+      outSlope: -0.8166925
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0
+      time: 0.5
+      value: -0.40834624
       inSlope: 0
       outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.8166925
+      outSlope: 0.8166925
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -43,22 +52,22 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0.022902247
+      outSlope: 0.022902247
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.0819209
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0.0057379357
+      outSlope: 0.0057379357
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.65395486
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  offsetOffLane: {x: 0, y: 1.03, z: 0}
+  offsetOffLane: {x: 0, y: 2.82, z: 0}

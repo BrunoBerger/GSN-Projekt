@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d89e0d1ee67ae4c9ba880920b5e23c, type: 3}
   m_Name: PlayerJumpPreset
   m_EditorClassIdentifier: 
-  jumpDuration: 0.3
+  jumpDuration: 0.5
   verticalMovement:
     serializedVersion: 2
     m_Curve:
@@ -70,4 +70,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  offsetOffLane: {x: 0, y: 0.6, z: 0}
+  offsetOffLane: {x: 0, y: 0.15, z: 0}
