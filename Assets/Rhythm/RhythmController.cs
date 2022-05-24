@@ -68,13 +68,13 @@ public class RhythmController : MonoBehaviour
     {
         gameState.speed += 0.25f;
         gameState.beerCounter -= 1;
-        jumpPreset.jumpDuration = gameState.speed / 2;
+        jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
 
     public void getSober()
     {
         gameState.speed -= 0.25f;
-        jumpPreset.jumpDuration = gameState.speed / 2;
+        jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
 
     void onTact()
