@@ -58,19 +58,6 @@ public class RhythmController : MonoBehaviour
 
     void endOfRhythm()
     {
-        if (rhythmVisualisation.rhythmCorrect() && gameState.beerCounter > 0)
-        {
-            drinkBeer();
-        }
-        else if (gameState.danceRush == 0 && 1 / gameState.speed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
-        {
-            getSober();
-        }
-        else if(gameState.danceRush > 0)
-        {
-            gameState.danceRush -= 1;
-        }
-
         if (gameState.chord < audioClips.chords.Count - 1)
             gameState.chord++;
         else
@@ -79,24 +66,32 @@ public class RhythmController : MonoBehaviour
 
     public void drinkBeer()
     {
-        gameState.speed *= 1.25f;
+        gameState.speed += 0.25f;
         gameState.beerCounter -= 1;
-        gameState.danceRush = 3;
-        jumpPreset.jumpDuration /= 1.25f;
+        jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
 
     public void getSober()
     {
-        gameState.speed /= 1.25f;
-        jumpPreset.jumpDuration *= 1.25f;
+        gameState.speed -= 0.25f;
+        jumpPreset.jumpDuration = 1 / gameState.speed / 2;
+    }
+
+    void onTact()
+    {
+        if (rhythmVisualisation.rhythmCorrect() && gameState.beerCounter > 0)
+        {
+            drinkBeer();
+            rhythmVisualisation.resetAllColors();
+        }
     }
 
     IEnumerator tact()
     {
-        if(beatPos == 0)
-            rhythmVisualisation.resetAllColors();
-
         nextTact = false;
+
+        onTact();
+
         rhythmVisualisation.onTact(beatPos);
         yield return new WaitForSeconds(1 / (2 * gameState.speed));
         playRhythm.onTact(beatPos);
