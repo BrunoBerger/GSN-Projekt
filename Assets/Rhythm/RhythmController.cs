@@ -13,6 +13,8 @@ public class RhythmController : MonoBehaviour
     [SerializeField]
     RhythmVisualisation rhythmVisualisation;
 
+    [SerializeField] AnimationStateController animationStateController;
+
     [SerializeField] JumpPreset jumpPreset;
     int beatPos = 0;
     bool nextTact = false;
@@ -58,6 +60,19 @@ public class RhythmController : MonoBehaviour
 
     void endOfRhythm()
     {
+        if (rhythmVisualisation.rhythmCorrect() && gameState.beerCounter > 0)
+        {
+            drinkBeer();
+        }
+        else if (gameState.danceRush == 0 && 1 / gameState.speed < slowestTactSpeed && gameState.speed > slowestTactSpeed)
+        {
+            getSober();
+        }
+        else if(gameState.danceRush > 0)
+        {
+            gameState.danceRush -= 1;
+        }
+
         if (gameState.chord < audioClips.chords.Count - 1)
             gameState.chord++;
         else
@@ -68,6 +83,7 @@ public class RhythmController : MonoBehaviour
     {
         gameState.speed += 0.25f;
         gameState.beerCounter -= 1;
+        gameState.danceRush = 3;
         jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
 
