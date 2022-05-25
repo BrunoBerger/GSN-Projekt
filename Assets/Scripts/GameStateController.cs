@@ -8,20 +8,28 @@ public class GameStateController : MonoBehaviour
     [SerializeField]
     JumpPreset jumpPreset;
     [SerializeField]
-    TMP_Text speed;
+    TMP_Text distance;
+    float _totalDistance = 0;
     [SerializeField]
     TMP_Text beerCounter;
     [SerializeField]
     TMP_Text danceRush;
     [SerializeField]
     GameObject danceRushVisuals;
-    // Start is called before the first frame update
+
+    //Endscreen
+    [SerializeField] TMP_Text distanceEnd;
+    [SerializeField] TMP_Text beersEnd;
+    [SerializeField] TMP_Text comboEnd;
+
+
     void Awake()
     {
         gameState.chord = 0;
         gameState.speed = 1;
-        speed.text = "1";
+        distance.text = "0";
         gameState.beerCounter = 0;
+        gameState.beersColectedTotal = 0;
         beerCounter.text = "0";
         gameState.danceRush = 0;
         danceRush.text = "0";
@@ -29,15 +37,16 @@ public class GameStateController : MonoBehaviour
         danceRushVisuals.SetActive(false);
         jumpPreset.jumpDuration = 0.5f;
         gameState.police = 0;
+        gameState.stateChanged.AddListener(GameEnded);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameState.speed.ToString("F2") != speed.text)
-        {
-            speed.text = gameState.speed.ToString("F2");
-        }
+        _totalDistance += gameState.speed * Time.deltaTime * StreetGenerator.ScrollSpeedFactor;
+        if(distance.text != _totalDistance.ToString("F0"))
+            distance.text = _totalDistance.ToString("F0");
+
         if(gameState.beerCounter != int.Parse(beerCounter.text))
         {
             beerCounter.text = gameState.beerCounter.ToString();
@@ -53,5 +62,12 @@ public class GameStateController : MonoBehaviour
             danceRush.enabled = false;
             danceRushVisuals.SetActive(false);
         }
+    }
+
+    private void GameEnded()
+    {
+        distanceEnd.text = _totalDistance.ToString("F0");
+        beersEnd.text = gameState.beersColectedTotal.ToString();
+        comboEnd.text = gameState.maxCombo.ToString();
     }
 }

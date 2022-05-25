@@ -12,11 +12,10 @@ public class StreetGenerator : MonoBehaviour
     public  float StreetWidth = 5; 
     public  float ActiveStreetTiles = 5;
     private float ScrollSpeed;
-    [Range(1.1f,100f)]
-    public float ScrollSpeedFactor = 7f; // If gameState.speed should be taken directly as ScrollSpeed, set to 1
+    public static float ScrollSpeedFactor = 15f; // If gameState.speed should be taken directly as ScrollSpeed, set to 1
     public float Carspeed = 5;
     [Range(0f, 1f)]
-    public float ObstacleSpawnRate = 0.5f;
+    public float ObstacleSpawnRate = 0.3f;
     [Range (0f, 1f)]
     public float DecorationSpawnRate = 0.5f;
     public float DecorationSpawnAreaWidth = 20f;
@@ -56,7 +55,7 @@ public class StreetGenerator : MonoBehaviour
 
     IEnumerator SpawnStuff()
     {
-        while (true)
+        while (ScrollSpeed > 0)
         {
             yield return new WaitForSeconds(StreetLenght / ScrollSpeed);
             SpawnDecoration();
@@ -66,6 +65,9 @@ public class StreetGenerator : MonoBehaviour
 
     void Update()
     {
+        //variable updates
+        if(ObstacleSpawnRate<1.0f)
+            ObstacleSpawnRate += Time.deltaTime * 0.002f;
 
         ScrollSpeed = gameState.speed * ScrollSpeedFactor;
 

@@ -44,6 +44,8 @@ public class PoliceController : MonoBehaviour
             {
                 // Game Over
                 endScreenCanvas.gameObject.SetActive(true);
+                gameState.speed = 0f;
+                gameState.SetState(States.End);
             }
         }
         else

@@ -17,6 +17,7 @@ public class PlayerHit : MonoBehaviour
         if (other.gameObject.tag == "Collectable")
         {
             gameState.beerCounter++;
+            gameState.beersColectedTotal++;
             // gameState.speed += 1;
             //other.gameObject.GetComponent<MeshRenderer>().enabled = false; // Doesnt work with keg-prefab
             other.gameObject.transform.localScale = new Vector3(0, 0, 0);
