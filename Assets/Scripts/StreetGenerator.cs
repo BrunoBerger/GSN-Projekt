@@ -19,11 +19,13 @@ public class StreetGenerator : MonoBehaviour
     [Range (0f, 1f)]
     public float DecorationSpawnRate = 0.5f;
     public float DecorationSpawnAreaWidth = 20f;
+    [Range(1.0f, 10f)]
+    public float DecorationSize = 6f;
 
     public GameObject StreetPrefab;
     public GameObject[] ObstaclePrefabs;
     public Material[] ObstacleMaterials;
-    public GameObject DecorationPrefab;
+    public GameObject[] DecorationPrefabs;
 
     private Queue<GameObject> _streetQueue = new Queue<GameObject>();
     private GameObject _lastAdded;
@@ -122,6 +124,9 @@ public class StreetGenerator : MonoBehaviour
 
     private void SpawnDecoration(float zPos)
     {
+        if (DecorationPrefabs.Length <= 0)
+            return;
+
         var random = Random.value;
         if (random > DecorationSpawnRate)
             return;
@@ -129,7 +134,12 @@ public class StreetGenerator : MonoBehaviour
         var x = (Random.value * DecorationSpawnAreaWidth) + (StreetWidth/2);
         x = random < DecorationSpawnRate / 2 ? -x : x;
 
-        var d = Instantiate(DecorationPrefab, new Vector3(x, 0, zPos), Quaternion.identity, transform);
+        var type = (int)(Random.value * DecorationPrefabs.Length);
+
+        var scale = (Random.value + 0.1f) * DecorationSize;
+
+        var d = Instantiate(DecorationPrefabs[type], new Vector3(x, 0, zPos), Quaternion.identity, transform);
+        d.transform.localScale = (new Vector3(scale, scale, scale));
         _decorationQueue.Enqueue(d);
     }
 
