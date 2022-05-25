@@ -13,6 +13,8 @@ public class RhythmController : MonoBehaviour
     [SerializeField]
     RhythmVisualisation rhythmVisualisation;
 
+    [SerializeField] AnimationStateController animationStateController;
+
     [SerializeField] JumpPreset jumpPreset;
     int beatPos = 0;
     bool nextTact = false;
@@ -79,6 +81,7 @@ public class RhythmController : MonoBehaviour
 
     public void drinkBeer()
     {
+        animationStateController.drink();
         gameState.speed *= 1.25f;
         gameState.beerCounter -= 1;
         gameState.danceRush = 3;
