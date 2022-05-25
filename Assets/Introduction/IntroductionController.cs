@@ -42,7 +42,7 @@ public class IntroductionController : MonoBehaviour
 
         defaultObstacleSpawnRate = streetGenerator.ObstacleSpawnRate;
         streetGenerator.ObstacleSpawnRate = 0;
-        defaulScrollSpeedFactor = streetGenerator.ScrollSpeedFactor;
+        defaulScrollSpeedFactor = StreetGenerator.ScrollSpeedFactor;
         // streetGenerator.ScrollSpeedFactor = 1.1f;
 
         beerGiver.SetActive(false);
@@ -102,7 +102,7 @@ public class IntroductionController : MonoBehaviour
 
     void EnableStreet(){
         streetGenerator.ObstacleSpawnRate = defaultObstacleSpawnRate;
-        streetGenerator.ScrollSpeedFactor = defaulScrollSpeedFactor;
+        StreetGenerator.ScrollSpeedFactor = defaulScrollSpeedFactor;
         distanceElement.SetActive(true);
         gameState.speed += 0.25f;
         introductionText.text = "IF YOU HIT A CAR\nYOU WILL SLOW DOWN";
