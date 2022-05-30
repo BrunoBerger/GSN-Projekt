@@ -13,7 +13,7 @@ public class PoliceController : MonoBehaviour
     [SerializeField]
     Slider positionSlider;
     [SerializeField]
-    Slider speedSlider;
+    PoliceSpeedIndicator speedIndicator;
     [SerializeField]
     float worstPoliceCatchupSeconds = 60;
     [SerializeField]
@@ -75,13 +75,12 @@ public class PoliceController : MonoBehaviour
         if (Time.fixedTime < _cooldownTime)
         {
             positionSlider.value = 0.0f;
-            speedSlider.value = 0.5f;
+            speedIndicator.SetValue(0.0f);
         }
         else
         {
             positionSlider.value = Math.Min(1.0f, Math.Max(0.0f, gameState.police));
-            speedSlider.value =
-                (Math.Min(1.0f, Math.Max(-1.0f, gameState.policeChange * worstPoliceCatchupSeconds)) / 2.0f) + 0.5f;
+            speedIndicator.SetValue(Math.Min(1.0f, Math.Max(-1.0f, gameState.policeChange * worstPoliceCatchupSeconds)));
         }
     }
 }

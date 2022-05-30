@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: GameState
   m_EditorClassIdentifier: 
   speed: 1
-  chord: 4
-  beerCounter: 4
+  chord: 3
+  beerCounter: 10
+  beersColectedTotal: 11
+  maxCombo: 0
   danceRush: 0
-  police: 1.0815518
-  policeChange: 0.022222223
+  police: 0.47026986
+  policeChange: -0.034499805
+  stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
