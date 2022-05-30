@@ -11,4 +11,6 @@ public class Chord
     public AudioClip upPlayer;
     public AudioClip downPlayer;
     public AudioClip throwPlayer;
+    public AudioClip upPolice;
+    public AudioClip downPolice;
 }

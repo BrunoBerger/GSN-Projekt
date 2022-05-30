@@ -93,9 +93,9 @@ public class RhythmController : MonoBehaviour
         onTact();
 
         rhythmVisualisation.onTact(beatPos);
-        yield return new WaitForSeconds(1 / (2 * gameState.speed));
+        yield return new WaitForSeconds(1 / (2 * gameState.speed) - 0.1f);
         playRhythm.onTact(beatPos);
-        yield return new WaitForSeconds(1 / (2 * gameState.speed));
+        yield return new WaitForSeconds(1 / (2 * gameState.speed) + 0.1f);
 
         if (beatPos == 7)
         {
