@@ -22,6 +22,11 @@ public class GameState : ScriptableObject
         _currentState = state;
         stateChanged.Invoke();
     }
+
+    public States GetState()
+    {
+        return _currentState;
+    }
 }
 
 public enum States

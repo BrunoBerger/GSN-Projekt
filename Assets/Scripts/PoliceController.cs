@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PoliceController : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class PoliceController : MonoBehaviour
     ThePoLice policePrefab;
     [SerializeField]
     Canvas endScreenCanvas;
+    [SerializeField]
+    Slider positionSlider;
+    [SerializeField]
+    PoliceSpeedIndicator speedIndicator;
     [SerializeField]
     float worstPoliceCatchupSeconds = 60;
     [SerializeField]
@@ -34,10 +39,10 @@ public class PoliceController : MonoBehaviour
     void FixedUpdate()
     {
         if (Time.fixedTime < _cooldownTime) return;
-        gameState.policeChange = MathF.Min(
-            gameState.policeChange + (Time.fixedDeltaTime / worstPoliceCatchupSeconds / policeAccelerationSeconds),
-            (1 / worstPoliceCatchupSeconds) / gameState.speed);
-        gameState.police = MathF.Max(gameState.police + (Time.fixedDeltaTime * gameState.policeChange), 0.0f);
+        UpdatePolice(MathF.Max(gameState.police + (Time.fixedDeltaTime * gameState.policeChange), 0.0f),
+            MathF.Min(
+                gameState.policeChange + (Time.fixedDeltaTime / worstPoliceCatchupSeconds / policeAccelerationSeconds),
+                (1 / worstPoliceCatchupSeconds) / gameState.speed));
         if (gameState.police >= 1.0f)
         {
             if (!endScreenCanvas.isActiveAndEnabled)
@@ -59,7 +64,23 @@ public class PoliceController : MonoBehaviour
     {
         _cooldownTime = Time.fixedTime + earliestPoliceEncounter;
         policePrefab.lightIntensity = 0.0f;
-        gameState.police = 0.0f;
-        gameState.policeChange = 1 / worstPoliceCatchupSeconds;
+        UpdatePolice(0.0f, 1 / worstPoliceCatchupSeconds);
+    }
+
+    private void UpdatePolice(float relativePosition, float relativeSpeed)
+    {
+        gameState.police = relativePosition;
+        gameState.policeChange = relativeSpeed;
+
+        if (Time.fixedTime < _cooldownTime)
+        {
+            positionSlider.value = 0.0f;
+            speedIndicator.SetValue(0.0f);
+        }
+        else
+        {
+            positionSlider.value = Math.Min(1.0f, Math.Max(0.0f, gameState.police));
+            speedIndicator.SetValue(Math.Min(1.0f, Math.Max(-1.0f, gameState.policeChange * worstPoliceCatchupSeconds)));
+        }
     }
 }
