@@ -15,7 +15,15 @@ public class GameStateController : MonoBehaviour
     TMP_Text danceRush;
     [SerializeField]
     GameObject danceRushVisuals;
-    // Start is called before the first frame update
+    [SerializeField]
+    AnimationStateController animationStateController;
+
+    //Endscreen
+    [SerializeField] TMP_Text distanceEnd;
+    [SerializeField] TMP_Text beersEnd;
+    [SerializeField] TMP_Text comboEnd;
+
+
     void Awake()
     {
         gameState.chord = 0;
@@ -53,5 +61,13 @@ public class GameStateController : MonoBehaviour
             danceRush.enabled = false;
             danceRushVisuals.SetActive(false);
         }
+    }
+
+    private void GameEnded()
+    {
+        animationStateController.die();
+        distanceEnd.text = _totalDistance.ToString("F0");
+        beersEnd.text = gameState.beersColectedTotal.ToString();
+        comboEnd.text = gameState.maxCombo.ToString();
     }
 }

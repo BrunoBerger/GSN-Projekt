@@ -82,7 +82,7 @@ public class RhythmController : MonoBehaviour
     public void drinkBeer()
     {
         animationStateController.drink();
-        gameState.speed *= 1.25f;
+        gameState.speed += 0.25f;
         gameState.beerCounter -= 1;
         gameState.danceRush = 3;
         jumpPreset.jumpDuration /= 1.25f;

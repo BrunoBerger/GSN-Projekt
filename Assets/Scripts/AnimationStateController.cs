@@ -22,7 +22,7 @@ public class AnimationStateController : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat(animationSpeedHash, (gameState.speed * 0.5f));
+        animator.SetFloat(animationSpeedHash, (gameState.speed));
     }
 
     public void startJump()
