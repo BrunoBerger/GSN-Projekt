@@ -28,6 +28,7 @@ public class BeerGiverAi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameState.SetState(States.Playing);
         // Find & order all of the lanes in the scene and snap to the nearest
         lanes = GameObject.FindGameObjectsWithTag("lane").OrderBy(i => i.transform.position.x).ToArray();
         float initalDistance = float.MaxValue;
@@ -46,6 +47,8 @@ public class BeerGiverAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameState.GetState() == States.End)
+            return;
         timeSinceLastJump += Time.deltaTime;
 
 
