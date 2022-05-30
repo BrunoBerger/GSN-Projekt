@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RhythmController : MonoBehaviour
@@ -83,7 +82,6 @@ public class RhythmController : MonoBehaviour
     {
         gameState.speed += 0.25f;
         gameState.beerCounter -= 1;
-        gameState.danceRush = 3;
         jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
 

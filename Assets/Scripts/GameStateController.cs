@@ -16,6 +16,8 @@ public class GameStateController : MonoBehaviour
     TMP_Text danceRush;
     [SerializeField]
     GameObject danceRushVisuals;
+    [SerializeField]
+    AnimationStateController animationStateController;
 
     //Endscreen
     [SerializeField] TMP_Text distanceEnd;
@@ -66,6 +68,7 @@ public class GameStateController : MonoBehaviour
 
     private void GameEnded()
     {
+        animationStateController.die();
         distanceEnd.text = _totalDistance.ToString("F0");
         beersEnd.text = gameState.beersColectedTotal.ToString();
         comboEnd.text = gameState.maxCombo.ToString();
