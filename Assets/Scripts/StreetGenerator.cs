@@ -25,6 +25,7 @@ public class StreetGenerator : MonoBehaviour
     public GameObject StreetPrefab;
     public GameObject[] ObstaclePrefabs;
     public Material[] ObstacleMaterials;
+    public AudioClip carSound;
     public GameObject[] DecorationPrefabs;
 
     private Queue<GameObject> _streetQueue = new Queue<GameObject>();
@@ -97,7 +98,7 @@ public class StreetGenerator : MonoBehaviour
                 item.transform.position = new Vector3(p.x, p.y, p.z - (ScrollSpeed + Carspeed) * Time.deltaTime);
             }
 
-            if(p.z < -4)
+            if(p.z < - 40)
             {
                 outOfView = item;
             }
@@ -166,6 +167,14 @@ public class StreetGenerator : MonoBehaviour
         {
             o.transform.Rotate(Vector3.up, 180);
         }
+        AudioSource o_audio = o.AddComponent<AudioSource>();
+        o_audio.clip = carSound;
+        o_audio.volume = 1f;
+        o_audio.dopplerLevel = 5;
+        o_audio.maxDistance = 200;
+        o_audio.spatialBlend = 1;
+        o_audio.Play();
+
         var randomMaterialIndex= (int)(Random.value * ObstacleMaterials.Length);
         var meshRenderer = o.GetComponentsInChildren<MeshRenderer>();
         foreach (var r in meshRenderer)
