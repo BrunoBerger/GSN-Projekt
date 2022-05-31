@@ -9,6 +9,7 @@ public class PlayerHit : MonoBehaviour
     [SerializeField] RhythmController rhythmController;
     [SerializeField] ShakePreset shakePreset;
 
+    AudioSource slurpSource;
     Camera cam;
     float normalFOV = 60f;
 
@@ -18,13 +19,13 @@ public class PlayerHit : MonoBehaviour
     {
         cam = Camera.main;
         cam.fieldOfView = normalFOV;
+        slurpSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Obstacle")
         {
-            //shakeInstance.Start(0.2f);
             Shaker.ShakeAll(shakePreset);
             if (gameState.speed > 1)
                 rhythmController.getSober();
@@ -33,11 +34,10 @@ public class PlayerHit : MonoBehaviour
         {
             gameState.beerCounter++;
             gameState.beersColectedTotal++;
-            // gameState.speed += 1;
-            //other.gameObject.GetComponent<MeshRenderer>().enabled = false; // Doesnt work with keg-prefab
             other.gameObject.transform.localScale = new Vector3(0, 0, 0);
             StartCoroutine(speedEffect());
-            // TODO: some sound effect
+            slurpSource.pitch = Random.Range(1.0f, 1.4f);
+            slurpSource.Play();
         }
     }
 
