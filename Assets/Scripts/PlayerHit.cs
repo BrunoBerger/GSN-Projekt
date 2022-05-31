@@ -13,6 +13,7 @@ public class PlayerHit : MonoBehaviour
         {
             if (gameState.speed > 1)
                 rhythmController.getSober();
+            gameState.policeChange += 0.02f * gameState.speed;
         }
         if (other.gameObject.tag == "Collectable")
         {

@@ -21,6 +21,8 @@ public class PoliceController : MonoBehaviour
     [SerializeField]
     float policeAccelerationSeconds = 7.5f;
     [SerializeField]
+    float hitPenaltySeconds = 10f;
+    [SerializeField]
     Vector3 sirenNear = new(0f, 0.7f, -3.84f);
     [SerializeField]
     Vector3 sirenFar = new(0f, 0.7f, -16f);
@@ -39,10 +41,21 @@ public class PoliceController : MonoBehaviour
     void FixedUpdate()
     {
         if (Time.fixedTime < _cooldownTime) return;
-        UpdatePolice(MathF.Max(gameState.police + (Time.fixedDeltaTime * gameState.policeChange), 0.0f),
-            MathF.Min(
+        var targetSpeed = 1 / worstPoliceCatchupSeconds / Mathf.Min(gameState.speed, 2.0f);
+        float newPoliceChange;
+        if (gameState.policeChange <= targetSpeed)
+        {
+            newPoliceChange = Mathf.Min(
                 gameState.policeChange + (Time.fixedDeltaTime / worstPoliceCatchupSeconds / policeAccelerationSeconds),
-                (1 / worstPoliceCatchupSeconds) / gameState.speed));
+                targetSpeed);
+        }
+        else
+        {
+            newPoliceChange = Mathf.Max(
+                gameState.policeChange - (Time.fixedDeltaTime / worstPoliceCatchupSeconds / hitPenaltySeconds),
+                targetSpeed);
+        }
+        UpdatePolice(MathF.Max(gameState.police + (Time.fixedDeltaTime * gameState.policeChange), 0.0f), newPoliceChange);
         if (gameState.police >= 1.0f)
         {
             if (!endScreenCanvas.isActiveAndEnabled)
@@ -80,7 +93,8 @@ public class PoliceController : MonoBehaviour
         else
         {
             positionSlider.value = Math.Min(1.0f, Math.Max(0.0f, gameState.police));
-            speedIndicator.SetValue(Math.Min(1.0f, Math.Max(-1.0f, gameState.policeChange * worstPoliceCatchupSeconds)));
+            var relativeSpeedNorm = Math.Min(1.0f, Math.Max(-1.0f, gameState.policeChange * worstPoliceCatchupSeconds));
+            speedIndicator.SetValue(relativeSpeedNorm * Mathf.Abs(relativeSpeedNorm));
         }
     }
 }
