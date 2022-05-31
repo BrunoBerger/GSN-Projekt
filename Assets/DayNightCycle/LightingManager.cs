@@ -14,7 +14,7 @@ public class LightingManager : MonoBehaviour
     [SerializeField] LightingPreset preset = null;
 
     [SerializeField, Range(0, 24)] float TimeOfDay = 12;
-    [SerializeField] float dayNightSpeed = 1;
+    [SerializeField] float dayNightSpeed;
 
     void OnValidate()
     {

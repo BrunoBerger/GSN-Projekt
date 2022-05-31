@@ -303,6 +303,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6702346872551300678}
     m_Modifications:
+    - target: {fileID: -6075758205966542863, guid: fc964e318d1efce47b91dd61cc7c2f33,
+        type: 3}
+      propertyPath: shakePreset
+      value: 
+      objectReference: {fileID: 11400000, guid: a5e19ed19516d16408e9f44687e87835,
+        type: 2}
     - target: {fileID: 4526145860821671087, guid: fc964e318d1efce47b91dd61cc7c2f33,
         type: 3}
       propertyPath: m_IsTrigger
