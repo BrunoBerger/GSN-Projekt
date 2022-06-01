@@ -19,6 +19,7 @@ public class IntroductionController : MonoBehaviour
     [SerializeField] GameObject strumPattern;
     [SerializeField] GameObject beerCounter;
     [SerializeField] GameObject distanceElement;
+    [SerializeField] GameObject policeIndicator;
     [SerializeField] TMP_Text introductionText;
     [SerializeField] JumpPreset jumpPreset;
 
@@ -27,7 +28,6 @@ public class IntroductionController : MonoBehaviour
     bool jumpedLeft = false;
     bool jumpedRight = false;
     bool throwedBeer = false;
-    float defaultObstacleSpawnRate;
     float defaulScrollSpeedFactor;
     public bool playerHitCar = false;
     bool performedDanceMove = false;
@@ -40,7 +40,6 @@ public class IntroductionController : MonoBehaviour
         strumPattern.SetActive(false);
         distanceElement.SetActive(false);
 
-        defaultObstacleSpawnRate = streetGenerator.ObstacleSpawnRate;
         streetGenerator.ObstacleSpawnRate = 0;
         defaulScrollSpeedFactor = StreetGenerator.ScrollSpeedFactor;
         // streetGenerator.ScrollSpeedFactor = 1.1f;
@@ -48,6 +47,7 @@ public class IntroductionController : MonoBehaviour
         beerGiver.SetActive(false);
         beerCounter.SetActive(false);
 
+        policeIndicator.SetActive(false);
         policeController.enabled = false;
         police.SetActive(false);
         introductionText.text = "PRESS LEFT/RIGHT KEY TO JUMP";
@@ -55,10 +55,15 @@ public class IntroductionController : MonoBehaviour
 
     void Update()
     {
+        if(!distanceElement.activeSelf)
+            streetGenerator.ObstacleSpawnRate = 0;
         if(performedDanceMove){
             if(countDownTimestamp - Time.time < 0)
                 SceneManager.LoadScene(0);
-            introductionText.text = "LEVEL WILL START IN " + (int)(countDownTimestamp - Time.time);
+            if(countDownTimestamp - Time.time < 3)
+                introductionText.text = "LEVEL WILL START IN " + (int)(countDownTimestamp - Time.time);
+            else
+                introductionText.text = "YOU DRANK A BEER AND\nINCREASED YOUR SPEED\n";
         }
         if(!beerGiver.activeSelf && jumpedLeft && jumpedRight){
             EnableBeerGiver();
@@ -75,7 +80,7 @@ public class IntroductionController : MonoBehaviour
         }
         else if(throwedBeer && rhythmVisualisation.rhythmCorrect()){
             performedDanceMove = true;
-            countDownTimestamp = Time.time + 3;
+            countDownTimestamp = Time.time + 6;
         }
         jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
@@ -101,7 +106,7 @@ public class IntroductionController : MonoBehaviour
     }
 
     void EnableStreet(){
-        streetGenerator.ObstacleSpawnRate = defaultObstacleSpawnRate;
+        streetGenerator.ObstacleSpawnRate = 1f;
         StreetGenerator.ScrollSpeedFactor = defaulScrollSpeedFactor;
         distanceElement.SetActive(true);
         gameState.speed += 0.25f;
@@ -109,6 +114,7 @@ public class IntroductionController : MonoBehaviour
     }
 
     void EnablePolice(){
+        policeIndicator.SetActive(true);
         police.SetActive(true);
         policeController.enabled = true;
         introductionText.text = "PRESS DOWN KEY TO THROW BEER\nAND SLOW DOWN THE POLICE";
@@ -118,6 +124,11 @@ public class IntroductionController : MonoBehaviour
         rhythmController.enabled = true;
         strumPattern.SetActive(true);
         rhythmVisualisation.enabled = true;
-        introductionText.text = "PRESS A KEY AT HIGHLIGHTED NOTES\nDON'T PRESS A KEY AT HIGHLIGHTED POINTS\n\nTO COMSUME BEER AND\nINCREASE YOUR SPEED";
+        introductionText.text = "PRESS A KEY ONLY AT HIGHLIGHTED NOTES\n";
+    }
+
+    public void SkipIntro(){
+        performedDanceMove = true;
+        countDownTimestamp = Time.time + 3;
     }
 }
