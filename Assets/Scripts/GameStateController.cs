@@ -68,9 +68,13 @@ public class GameStateController : MonoBehaviour
 
     private void GameEnded()
     {
-        animationStateController.die();
-        distanceEnd.text = _totalDistance.ToString("F0");
-        beersEnd.text = gameState.beersColectedTotal.ToString();
-        comboEnd.text = gameState.maxCombo.ToString();
+        if(gameState.GetState() == States.End)
+        {
+            animationStateController.die();
+            distanceEnd.text = _totalDistance.ToString("F0");
+            beersEnd.text = gameState.beersColectedTotal.ToString();
+            comboEnd.text = gameState.maxCombo.ToString();
+        }
+
     }
 }
