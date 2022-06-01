@@ -36,9 +36,10 @@ public class PlayerHit : MonoBehaviour
             gameState.beerCounter++;
             gameState.beersColectedTotal++;
             StartCoroutine(speedEffect());
+            other.GetComponentInChildren<MeshRenderer>().enabled = false;
             slurpSource.pitch = Random.Range(1.0f, 1.4f);
             slurpSource.Play();
-            other.GetComponentInChildren<MeshRenderer>().enabled = false;
+
         }
     }
 
