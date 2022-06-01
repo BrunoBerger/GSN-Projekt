@@ -60,7 +60,10 @@ public class IntroductionController : MonoBehaviour
         if(performedDanceMove){
             if(countDownTimestamp - Time.time < 0)
                 SceneManager.LoadScene(0);
-            introductionText.text = "LEVEL WILL START IN " + (int)(countDownTimestamp - Time.time);
+            if(countDownTimestamp - Time.time < 3)
+                introductionText.text = "LEVEL WILL START IN " + (int)(countDownTimestamp - Time.time);
+            else
+                introductionText.text = "YOU DRANK A BEER AND\nINCREASED YOUR SPEED\n";
         }
         if(!beerGiver.activeSelf && jumpedLeft && jumpedRight){
             EnableBeerGiver();
@@ -77,7 +80,7 @@ public class IntroductionController : MonoBehaviour
         }
         else if(throwedBeer && rhythmVisualisation.rhythmCorrect()){
             performedDanceMove = true;
-            countDownTimestamp = Time.time + 3;
+            countDownTimestamp = Time.time + 6;
         }
         jumpPreset.jumpDuration = 1 / gameState.speed / 2;
     }
@@ -121,7 +124,7 @@ public class IntroductionController : MonoBehaviour
         rhythmController.enabled = true;
         strumPattern.SetActive(true);
         rhythmVisualisation.enabled = true;
-        introductionText.text = "PRESS A KEY AT HIGHLIGHTED NOTES\nDON'T PRESS A KEY AT HIGHLIGHTED POINTS\n\nTO COMSUME BEER AND\nINCREASE YOUR SPEED";
+        introductionText.text = "PRESS A KEY ONLY AT HIGHLIGHTED NOTES\n";
     }
 
     public void SkipIntro(){
