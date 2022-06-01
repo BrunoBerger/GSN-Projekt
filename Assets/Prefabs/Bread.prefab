@@ -939,6 +939,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 1593312503921222136, guid: 771e6c40ce5856d458be16fa801cb2c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2114235427016276802, guid: 771e6c40ce5856d458be16fa801cb2c1,
         type: 3}
       propertyPath: m_RootOrder

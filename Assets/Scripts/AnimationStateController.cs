@@ -8,6 +8,7 @@ public class AnimationStateController : MonoBehaviour
     Animator animator;
     int isJumpingHash, dropBeerHash, animationSpeedHash, dieHash, drinkHash;
     bool pauseTripping = false;
+    GameObject bottle;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class AnimationStateController : MonoBehaviour
         animationSpeedHash = Animator.StringToHash("AnimationSpeed");
         dieHash = Animator.StringToHash("Die");
         drinkHash = Animator.StringToHash("Drink");
+        bottle = GameObject.Find("lShoulder/lArm/Bottle");
     }
 
     private void Update()
@@ -47,7 +49,13 @@ public class AnimationStateController : MonoBehaviour
 
     public void drink()
     {
+        bottle.SetActive(true);
         animator.SetTrigger(drinkHash);
+    }
+
+    public void hideBottle() {
+
+        bottle.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
