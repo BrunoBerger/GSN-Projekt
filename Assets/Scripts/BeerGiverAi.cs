@@ -13,6 +13,7 @@ public class BeerGiverAi : MonoBehaviour
     float percentJumped;
     Vector3 jumpStartPos;
     Vector3 jumpEndPos;
+    Vector3 spawnPos;
 
     [SerializeField] GameState gameState;
     [SerializeField] JumpPreset jumpPreset = null;
@@ -29,6 +30,7 @@ public class BeerGiverAi : MonoBehaviour
     void Start()
     {
         gameState.SetState(States.Playing);
+        spawnPos = transform.position;
         // Find & order all of the lanes in the scene and snap to the nearest
         lanes = GameObject.FindGameObjectsWithTag("lane").OrderBy(i => i.transform.position.x).ToArray();
         float initalDistance = float.MaxValue;
@@ -50,7 +52,6 @@ public class BeerGiverAi : MonoBehaviour
         if (gameState.GetState() == States.End)
             return;
         timeSinceLastJump += Time.deltaTime;
-
 
         if (!currentlyJumping && timeSinceLastJump > minimumTimeBetweenJumps)
         {
@@ -78,7 +79,7 @@ public class BeerGiverAi : MonoBehaviour
             transform.position = new Vector3(
                 lerpPos.x,
                 lerpPos.y + currentJumpHeight,
-                transform.position.z
+                spawnPos.z + 10*gameState.speed/2
             );
 
             if (timeJumped >= jumpPreset.jumpDuration)
@@ -108,7 +109,7 @@ public class BeerGiverAi : MonoBehaviour
                 lerped.y,
                 beer.transform.position.z
             );
-            fallPercent += 0.02f;
+            fallPercent += (3f * gameState.speed) * Time.deltaTime;
             yield return null;
         }
     }
