@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PoliceController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PoliceController : MonoBehaviour
     [SerializeField]
     Canvas endScreenCanvas;
     [SerializeField]
-    Slider positionSlider;
+    PositionBar positionBar;
     [SerializeField]
     PoliceSpeedIndicator speedIndicator;
     [SerializeField]
@@ -87,12 +88,12 @@ public class PoliceController : MonoBehaviour
 
         if (Time.fixedTime < _cooldownTime)
         {
-            positionSlider.value = 0.0f;
+            positionBar.SetValue(0.0f);
             speedIndicator.SetValue(0.0f);
         }
         else
         {
-            positionSlider.value = Math.Min(1.0f, Math.Max(0.0f, gameState.police));
+            positionBar.SetValue(Math.Min(1.0f, Math.Max(0.0f, gameState.police)));
             var relativeSpeedNorm = Math.Min(1.0f, Math.Max(-1.0f, gameState.policeChange * worstPoliceCatchupSeconds));
             speedIndicator.SetValue(relativeSpeedNorm * Mathf.Abs(relativeSpeedNorm));
         }
