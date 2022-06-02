@@ -5,14 +5,9 @@ using UnityEngine.UI;
 
 public class RhythmVisualisation : MonoBehaviour
 {
-    Image[] sprites;
+    [SerializeField] Image[] sprites;
     void Start()
     {
-        sprites = new Image[transform.childCount];
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            sprites[i] = gameObject.transform.GetChild(i).GetComponent<Image>();
-        }
 
     }
 

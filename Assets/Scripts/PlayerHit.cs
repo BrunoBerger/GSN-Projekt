@@ -9,11 +9,11 @@ public class PlayerHit : MonoBehaviour
     [SerializeField] RhythmController rhythmController;
     [SerializeField] ShakePreset shakePreset;
 
-    AudioSource slurpSource;
+    
 
     private void Start()
     {
-        slurpSource = GetComponent<AudioSource>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,9 +30,6 @@ public class PlayerHit : MonoBehaviour
             gameState.beerCounter++;
             gameState.beersColectedTotal++;
             other.GetComponentInChildren<MeshRenderer>().enabled = false;
-            slurpSource.pitch = Random.Range(1.0f, 1.4f);
-            slurpSource.Play();
-
         }
     }
 }
