@@ -35,8 +35,8 @@ public class IntroductionController : MonoBehaviour
 
     void Start()
     {
-        rhythmController.enabled = false;
-        rhythmVisualisation.enabled = false;
+        // rhythmController.enabled = false;
+        // rhythmVisualisation.enabled = false;
         strumPattern.SetActive(false);
         distanceElement.SetActive(false);
 
@@ -59,7 +59,7 @@ public class IntroductionController : MonoBehaviour
             streetGenerator.ObstacleSpawnRate = 0;
         if(performedDanceMove){
             if(countDownTimestamp - Time.time < 0)
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             if(countDownTimestamp - Time.time < 3)
                 introductionText.text = "LEVEL WILL START IN " + (int)(countDownTimestamp - Time.time);
             else
@@ -78,7 +78,7 @@ public class IntroductionController : MonoBehaviour
         {
             EnableRhythm();
         }
-        else if(throwedBeer && rhythmVisualisation.rhythmCorrect()){
+        else if(throwedBeer && rhythmVisualisation.rhythmCorrect() && !performedDanceMove){
             performedDanceMove = true;
             countDownTimestamp = Time.time + 6;
         }
@@ -106,7 +106,7 @@ public class IntroductionController : MonoBehaviour
     }
 
     void EnableStreet(){
-        streetGenerator.ObstacleSpawnRate = 1f;
+        streetGenerator.ObstacleSpawnRate = 0.5f;
         StreetGenerator.ScrollSpeedFactor = defaulScrollSpeedFactor;
         distanceElement.SetActive(true);
         gameState.speed += 0.25f;
@@ -121,6 +121,7 @@ public class IntroductionController : MonoBehaviour
     }
     
     void EnableRhythm(){
+        rhythmVisualisation.resetAllColors();
         rhythmController.enabled = true;
         strumPattern.SetActive(true);
         rhythmVisualisation.enabled = true;
