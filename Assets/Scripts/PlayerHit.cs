@@ -8,6 +8,7 @@ public class PlayerHit : MonoBehaviour
     [SerializeField] GameState gameState;
     [SerializeField] RhythmController rhythmController;
     [SerializeField] ShakePreset shakePreset;
+    [SerializeField] AudioSource carHitSound;
 
     
 
@@ -24,6 +25,7 @@ public class PlayerHit : MonoBehaviour
             if (gameState.speed > 1)
                 rhythmController.getSober();
             gameState.policeChange += 0.02f * gameState.speed;
+            carHitSound.Play();
         }
         if (other.gameObject.tag == "Collectable")
         {
