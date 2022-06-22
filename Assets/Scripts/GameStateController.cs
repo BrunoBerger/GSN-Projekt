@@ -39,12 +39,20 @@ public class GameStateController : MonoBehaviour
         danceRushVisuals.SetActive(false);
         jumpPreset.jumpDuration = 0.5f;
         gameState.police = 0;
+        gameState.timesHit = 0;
+        gameState.runTime = 0;
+        gameState.avargeSpeed = 0;
+        gameState.distance = 0;
+        gameState.inputCount = 0;
         gameState.stateChanged.AddListener(GameEnded);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gameState.GetState() == States.Playing)
+            gameState.runTime += Time.deltaTime;
+
         _totalDistance += gameState.speed * Time.deltaTime * StreetGenerator.ScrollSpeedFactor;
         if(distance.text != _totalDistance.ToString("F0"))
             distance.text = _totalDistance.ToString("F0");
@@ -70,6 +78,8 @@ public class GameStateController : MonoBehaviour
     {
         if(gameState.GetState() == States.End)
         {
+            gameState.avargeSpeed = _totalDistance / gameState.runTime;
+            gameState.distance = _totalDistance;
             animationStateController.die();
             distanceEnd.text = _totalDistance.ToString("F0");
             beersEnd.text = gameState.beersColectedTotal.ToString();
