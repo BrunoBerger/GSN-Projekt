@@ -20,18 +20,24 @@ public class InputController : MonoBehaviour
             jumpBetweenLanes.StartNewJump(-1);
             // rhythmController.play();
             rhythmController.up();
+            if (gameState.GetState() == States.Playing)
+                gameState.inputCount++;
         }
         else if (direction.x > 0 && !jumpBetweenLanes.currentlyJumping)
         {
             jumpBetweenLanes.StartNewJump(+1);
             // rhythmController.play();
             rhythmController.down();
+            if (gameState.GetState() == States.Playing)
+                gameState.inputCount++;
         }
         else if (direction.y < 0 && !jumpBetweenLanes.currentlyJumping && gameState.beerCounter > 0)
         {
             gameState.beerCounter -= 1;
             beerThrowerPlayer.dropBeer();
             rhythmController.throwBeer();
+            if (gameState.GetState() == States.Playing)
+                gameState.inputCount++;
         }
         else if (direction.y > 0 && gameState.beerCounter > 0)
         {

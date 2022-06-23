@@ -15,6 +15,7 @@ public class GameStateController : MonoBehaviour
     TMP_Text danceRush;
     [SerializeField]
     GameObject danceRushVisuals;
+    private float _totalDistance;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,6 +23,7 @@ public class GameStateController : MonoBehaviour
         gameState.speed = 1;
         speed.text = "1";
         gameState.beerCounter = 0;
+        gameState.totalBeerCount = 0;
         beerCounter.text = "0";
         gameState.danceRush = 0;
         danceRush.text = "0";
@@ -29,12 +31,24 @@ public class GameStateController : MonoBehaviour
         danceRushVisuals.SetActive(false);
         jumpPreset.jumpDuration = 0.5f;
         gameState.police = 0;
+        gameState.timesHit = 0;
+        gameState.runTime = 0;
+        gameState.avargeSpeed = 0;
+        gameState.distance = 0;
+        gameState.inputCount = 0;
+        gameState.stateChanged.AddListener(GameEnded);
+        gameState.SetState(States.Playing);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameState.speed.ToString("F2") != speed.text)
+        if (gameState.GetState() == States.Playing)
+            gameState.runTime += Time.deltaTime;
+
+        _totalDistance += gameState.speed * Time.deltaTime * StreetGenerator.ScrollSpeedFactor;
+
+        if (gameState.speed.ToString("F2") != speed.text)
         {
             speed.text = gameState.speed.ToString("F2");
         }
@@ -52,6 +66,15 @@ public class GameStateController : MonoBehaviour
         {
             danceRush.enabled = false;
             danceRushVisuals.SetActive(false);
+        }
+    }
+
+    private void GameEnded()
+    {
+        if (gameState.GetState() == States.End)
+        {
+            gameState.avargeSpeed = _totalDistance / gameState.runTime;
+            gameState.distance = _totalDistance;
         }
     }
 }

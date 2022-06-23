@@ -13,7 +13,7 @@ public class StreetGenerator : MonoBehaviour
     public  float ActiveStreetTiles = 5;
     private float ScrollSpeed;
     [Range(1.1f,100f)]
-    public float ScrollSpeedFactor = 7f; // If gameState.speed should be taken directly as ScrollSpeed, set to 1
+    public static float ScrollSpeedFactor = 7f; // If gameState.speed should be taken directly as ScrollSpeed, set to 1
     public float Carspeed = 5;
     [Range(0f, 1f)]
     public float ObstacleSpawnRate = 0.5f;
