@@ -6,6 +6,8 @@ public class GameStateController : MonoBehaviour
     [SerializeField]
     GameState gameState;
     [SerializeField]
+    SaveMetrics saveMetrics;
+    [SerializeField]
     JumpPreset jumpPreset;
     [SerializeField]
     TMP_Text distance;
@@ -84,6 +86,7 @@ public class GameStateController : MonoBehaviour
             distanceEnd.text = _totalDistance.ToString("F0");
             beersEnd.text = gameState.beersColectedTotal.ToString();
             comboEnd.text = gameState.maxCombo.ToString();
+            saveMetrics.WriteMetrics();
         }
 
     }

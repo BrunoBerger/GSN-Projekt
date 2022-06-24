@@ -12,8 +12,6 @@ public class PoliceController : MonoBehaviour
     [SerializeField]
     Canvas endScreenCanvas;
     [SerializeField]
-    SaveMetrics saveMetrics;
-    [SerializeField]
     PositionBar positionBar;
     [SerializeField]
     PoliceSpeedIndicator speedIndicator;
@@ -65,7 +63,6 @@ public class PoliceController : MonoBehaviour
             {
                 // Game Over
                 endScreenCanvas.gameObject.SetActive(true);
-                saveMetrics.WriteMetrics();
                 gameState.speed = 0f;
                 gameState.SetState(States.End);
             }

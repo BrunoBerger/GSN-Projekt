@@ -16,11 +16,11 @@ public class SaveMetrics : MonoBehaviour
             path = Application.persistentDataPath;
 
         if(!File.Exists(path + "/metrics.csv")) 
-            File.WriteAllText(path + "/metrics.csv", "Beer Counter;Beer Collected in Total;Max Combo\n");
+            File.WriteAllText(path + "/metrics.csv", "Distance;Beer Counter;Beer Collected in Total;Max Combo;Times Hit;Run Time;Average Speed;Input Count\n");
     }
 
     public void WriteMetrics() 
     {
-        File.AppendAllText(path + "/metrics.csv", gameState.beerCounter + ";" + gameState.beersColectedTotal + ";" + gameState.maxCombo + "\n");
+        File.AppendAllText(path + "/metrics.csv", gameState.distance + ";" + gameState.beerCounter + ";" + gameState.beersColectedTotal + ";" + gameState.maxCombo + ";" + gameState.timesHit + ";" + gameState.runTime + ";" + gameState.avargeSpeed + ";" +gameState.inputCount + "\n");
     }
 }
