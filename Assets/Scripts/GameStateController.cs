@@ -25,6 +25,7 @@ public class GameStateController : MonoBehaviour
         gameState.speed = 1;
         speed.text = "1";
         gameState.beerCounter = 0;
+        gameState.totalBeerCount = 0;
         beerCounter.text = "0";
         gameState.danceRush = 0;
         danceRush.text = "0";
@@ -37,21 +38,22 @@ public class GameStateController : MonoBehaviour
         gameState.avargeSpeed = 0;
         gameState.distance = 0;
         gameState.inputCount = 0;
-        gameState.beersColectedTotal = 0;
         gameState.speedUps = 0;
         gameState.thrownBeer = 0;
         gameState.speedDowns = 0;
         gameState.stateChanged.AddListener(GameEnded);
+        gameState.SetState(States.Playing);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameState.GetState() == States.Playing)
+        if (gameState.GetState() == States.Playing)
             gameState.runTime += Time.deltaTime;
 
         _totalDistance += gameState.speed * Time.deltaTime * StreetGenerator.ScrollSpeedFactor;
-        if(gameState.speed.ToString("F2") != speed.text)
+
+        if (gameState.speed.ToString("F2") != speed.text)
         {
             speed.text = gameState.speed.ToString("F2");
         }

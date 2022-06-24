@@ -8,13 +8,13 @@ public class GameState : ScriptableObject
 {
     public float speed = 1;
     public int chord = 0;
-    public int beerCounter = 1;
-    public int beersColectedTotal = 0;
     public int maxCombo = 0;
+    public int beerCounter = 0;
+    public int totalBeerCount = 0;
     public int danceRush = 0;
     public float police = 0;
     public float policeChange = 0;
-    public int timesHit=0;
+    public int timesHit = 0;
     public float runTime = 0;
     public float avargeSpeed = 0;
     public float distance = 0;
