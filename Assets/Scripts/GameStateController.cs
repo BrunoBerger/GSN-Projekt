@@ -46,6 +46,9 @@ public class GameStateController : MonoBehaviour
         gameState.avargeSpeed = 0;
         gameState.distance = 0;
         gameState.inputCount = 0;
+        gameState.speedUps = 0;
+        gameState.speedDowns = 0;
+        gameState.thrownBeer = 0;
         gameState.stateChanged.AddListener(GameEnded);
     }
 

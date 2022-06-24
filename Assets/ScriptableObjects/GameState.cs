@@ -19,6 +19,9 @@ public class GameState : ScriptableObject
     public float avargeSpeed = 0;
     public float distance = 0;
     public int inputCount = 0;
+    public int speedUps = 0;
+    public int speedDowns = 0;
+    public int thrownBeer = 0;
     private States _currentState = States.Playing;
     public UnityEvent stateChanged = new UnityEvent();
 
