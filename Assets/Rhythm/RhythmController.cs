@@ -54,6 +54,7 @@ public class RhythmController : MonoBehaviour
     {
         rhythmVisualisation.check(beatPos);
         playRhythm.throwBeer();
+        gameState.thrownBeer++;
     }
 
     void endOfRhythm()
@@ -83,12 +84,14 @@ public class RhythmController : MonoBehaviour
         gameState.beerCounter -= 1;
         gameState.danceRush = 3;
         jumpPreset.jumpDuration /= 1.25f;
+        gameState.speedUps++;
     }
 
     public void getSober()
     {
         gameState.speed /= 1.25f;
         jumpPreset.jumpDuration *= 1.25f;
+        gameState.speedDowns++;
     }
 
     IEnumerator tact()

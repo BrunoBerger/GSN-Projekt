@@ -13,13 +13,17 @@ public class PlayerHit : MonoBehaviour
         {
             if (gameState.speed > 1)
                 rhythmController.getSober();
+
+             if (gameState.GetState() == States.Playing)
+                gameState.timesHit++;
         }
-        if (other.gameObject.tag == "Collectable")
+        else if (other.gameObject.tag == "Collectable")
         {
             gameState.beerCounter++;
+            gameState.beersColectedTotal++;
             // gameState.speed += 1;
-            //other.gameObject.GetComponent<MeshRenderer>().enabled = false; // Doesnt work with keg-prefab
-            other.gameObject.transform.localScale = new Vector3(0, 0, 0);
+            other.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false; // Doesnt work with keg-prefab
+            // other.gameObject.transform.localScale = new Vector3(0, 0, 0);
             // TODO: some sound effect
         }
     }
