@@ -21,6 +21,6 @@ public class SaveMetrics : MonoBehaviour
 
     public void WriteMetrics() 
     {
-        File.AppendAllText(path + "/metrics.csv", gameState.distance + ";" + gameState.beerCounter + ";" + gameState.beersColectedTotal + ";" + gameState.timesHit + ";" + gameState.runTime + ";" + gameState.avargeSpeed + ";" +gameState.inputCount + ";" + gameState.speedUps + ";" + gameState.speedDowns + ";" + gameState.thrownBeer + "\n");
+        File.AppendAllText(path + "/metrics.csv", gameState.distance + ";" + gameState.beerCounter + ";" + gameState.totalBeerCount + ";" + gameState.timesHit + ";" + gameState.runTime + ";" + gameState.avargeSpeed + ";" +gameState.inputCount + ";" + gameState.speedUps + ";" + gameState.speedDowns + ";" + gameState.thrownBeer + "\n");
     }
 }
