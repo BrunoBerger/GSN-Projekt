@@ -26,6 +26,8 @@ public class PlayerHit : MonoBehaviour
                 rhythmController.getSober();
             gameState.policeChange += 0.02f * gameState.speed;
             carHitSound.Play();
+            if (gameState.GetState() == States.Playing)
+                gameState.timesHit++;
         }
         if (other.gameObject.tag == "Collectable")
         {

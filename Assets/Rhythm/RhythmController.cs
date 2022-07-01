@@ -62,6 +62,7 @@ public class RhythmController : MonoBehaviour
     {
         rhythmVisualisation.check(beatPos);
         playRhythm.throwBeer();
+        gameState.thrownBeer++;
     }
 
     void endOfRhythm()
@@ -86,12 +87,14 @@ public class RhythmController : MonoBehaviour
         StartCoroutine(speedEffect());
         slurpSource.pitch = Random.Range(1.0f, 1.4f);
         slurpSource.Play();
+        gameState.speedUps++;
     }
 
     public void getSober()
     {
         gameState.speed -= 0.25f;
         jumpPreset.jumpDuration = 1 / gameState.speed / 2;
+        gameState.speedDowns++;
     }
 
     void onTact()
